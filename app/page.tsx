@@ -22,9 +22,11 @@ const projects = [
     image: "/media/summer-beach-trio.jpg",
     imageAlt: "青空と海を背景に並ぶ三人の夏の一場面",
     href: "https://example.com/?work=summer-collab-01",
+    external: true,
     side: "left",
     rotate: "-3.5deg",
     accent: "#8bd9e8",
+    sceneWord: "海",
   },
   {
     id: "work-02",
@@ -36,9 +38,11 @@ const projects = [
     image: "/media/summer-surfing-wave.jpg",
     imageAlt: "真夏の青い波を滑るサーファー",
     href: "https://example.com/?work=summer-collab-02",
+    external: true,
     side: "right",
     rotate: "2.8deg",
     accent: "#77c9ff",
+    sceneWord: "波",
   },
   {
     id: "work-03",
@@ -50,9 +54,11 @@ const projects = [
     image: "/media/summer-night-sparkler.jpg",
     imageAlt: "夜の海辺で光を掲げる青年",
     href: "https://example.com/?work=summer-collab-03",
+    external: true,
     side: "left",
     rotate: "3.2deg",
     accent: "#ffd27a",
+    sceneWord: "光",
   },
   {
     id: "work-04",
@@ -64,9 +70,27 @@ const projects = [
     image: "/media/summer-festival-fireworks.jpg",
     imageAlt: "夏祭りの夜に花火を見上げる浴衣姿の二人",
     href: "https://example.com/?work=summer-collab-04",
+    external: true,
     side: "right",
     rotate: "-2.6deg",
     accent: "#ffad9e",
+    sceneWord: "祭",
+  },
+  {
+    id: "work-05",
+    chapter: "05",
+    englishTitle: "~Voyage on the Eternal Blue~",
+    title: "恋の航海",
+    credit: "12 CHARACTERS",
+    description: "豪華客船に集った12人。13人目のあなたが、恋と嘘を見抜く7日間。",
+    image: "/media/koi-no-voyage/cover-card.jpg",
+    imageAlt: "豪華客船の前に集まった恋の航海の12人",
+    href: "/koi-no-koukai/",
+    external: false,
+    side: "left",
+    rotate: "-1.8deg",
+    accent: "#69cbd3",
+    sceneWord: "航",
   },
 ] as const;
 
@@ -273,7 +297,7 @@ export default function Home() {
               <span>もう一度。</span>
             </h1>
             <p className="hero-lead">
-              ひとつの季節から生まれた、四つの物語。
+              ひとつの季節から生まれた、五つの物語。
               <br />
               スクロールして作品をめぐる小さな展覧会です。
             </p>
@@ -284,7 +308,7 @@ export default function Home() {
           </a>
         </section>
 
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <section
             className={`project-scene project-scene-${project.side}`}
             id={project.id}
@@ -296,13 +320,7 @@ export default function Home() {
               {project.chapter}
             </p>
             <p className="scene-word" aria-hidden="true">
-              {index === 0
-                ? "海"
-                : index === 1
-                  ? "波"
-                  : index === 2
-                    ? "光"
-                    : "祭"}
+              {project.sceneWord}
             </p>
 
             <article
@@ -325,18 +343,32 @@ export default function Home() {
                   <span>SUMMER STORY / {project.chapter}</span>
                   <span>{project.credit}</span>
                 </div>
-                <p className="project-english">{project.englishTitle}</p>
-                <h2>{project.title}</h2>
+                {project.external ? (
+                  <p className="project-english">{project.englishTitle}</p>
+                ) : null}
+                <h2>
+                  {project.title}
+                  {project.external ? null : (
+                    <>
+                      {" "}
+                      <span className="project-title-english">
+                        {project.englishTitle}
+                      </span>
+                    </>
+                  )}
+                </h2>
                 <p className="project-description">{project.description}</p>
                 <a
                   className="project-link"
-                  href={project.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  data-placeholder-link
+                  href={project.external ? project.href : asset(project.href)}
+                  target={project.external ? "_blank" : undefined}
+                  rel={project.external ? "noreferrer" : undefined}
+                  data-placeholder-link={project.external || undefined}
                 >
-                  <span>{project.title}を見る</span>
-                  <span aria-hidden="true">↗</span>
+                  <span>
+                    {project.external ? `${project.title}を見る` : "12人のキャラクターを見る"}
+                  </span>
+                  {project.external ? <span aria-hidden="true">↗</span> : null}
                 </a>
               </div>
               <span className="tape tape-bottom" aria-hidden="true" />
@@ -344,7 +376,9 @@ export default function Home() {
 
             <p className="scene-caption">
               <span>{project.englishTitle}</span>
-              <span>SCENE {project.chapter} / 04</span>
+              <span>
+                SCENE {project.chapter} / {String(projects.length).padStart(2, "0")}
+              </span>
             </p>
           </section>
         ))}
@@ -352,10 +386,10 @@ export default function Home() {
         <section className="collection" id="collection">
           <div className="collection-heading">
             <p className="eyebrow">COLLABORATION ARCHIVE</p>
-            <h2>四つの夏を、ひとつに。</h2>
+            <h2>五つの夏を、ひとつに。</h2>
             <p>
-              作品画像とリンクは仮素材です。正式な作品名・作者名・URLへ
-              そのまま差し替えられます。
+              作品画像から、それぞれの物語へ。『恋の航海』では、
+              豪華客船に乗り込む12人の参加者を紹介します。
             </p>
           </div>
 
@@ -366,9 +400,9 @@ export default function Home() {
                 return (
                   <a
                     className="gallery-card"
-                    href={project.href}
-                    target="_blank"
-                    rel="noreferrer"
+                    href={project.external ? project.href : asset(project.href)}
+                    target={project.external ? "_blank" : undefined}
+                    rel={project.external ? "noreferrer" : undefined}
                     key={`${project.id}-${index}`}
                     tabIndex={duplicate ? -1 : 0}
                     aria-hidden={duplicate || undefined}

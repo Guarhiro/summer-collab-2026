@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "あの夏を、もう一度。｜SUMMER COLLAB 2026",
   description:
-    "ひとつの季節から生まれた四つの物語を、映像とスクロールでめぐるコラボレーション展。",
+    "ひとつの季節から生まれた五つの物語を、映像とスクロールでめぐるコラボレーション展。",
   icons: {
     icon: `${basePath}/favicon.png`,
     shortcut: `${basePath}/favicon.png`,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "あの夏を、もう一度。｜SUMMER COLLAB 2026",
     description:
-      "映像とスクロールで四つの夏をめぐる、コラボレーション展。",
+      "映像とスクロールで五つの夏をめぐる、コラボレーション展。",
     type: "website",
     locale: "ja_JP",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "あの夏を、もう一度。｜SUMMER COLLAB 2026",
-    description: "映像とスクロールで四つの夏をめぐるコラボレーション展。",
+    description: "映像とスクロールで五つの夏をめぐるコラボレーション展。",
     images: [`${basePath}/media/summer-collab-poster.jpg`],
   },
 };
