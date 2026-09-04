@@ -48,7 +48,7 @@ test("exports the 12-character introduction with an internal return path", async
     readFile(detailOutput, "utf8"),
   ]);
   const internalProjectLink = mainHtml.match(
-    /<a class="project-link" href="\/koi-no-koukai\/"([^>]*)>/,
+    /<a\b(?=[^>]*class="project-link")(?=[^>]*href="\/koi-no-koukai\/")([^>]*)>/,
   );
 
   assert.ok(internalProjectLink, "the fifth project links to the character page");
@@ -108,4 +108,70 @@ test("ships the scroll-ready media and GitHub Pages workflow", async () => {
     ),
   );
   await access(root);
+});
+
+test("exports the persistent Eternal Blue BGM UI and audio", async () => {
+  const [
+    mainHtml,
+    detailHtml,
+    sourceAudio,
+    exportedAudio,
+    providerSource,
+    layoutSource,
+    homeSource,
+    gallerySource,
+    viteConfig,
+  ] = await Promise.all([
+    readFile(output, "utf8"),
+    readFile(detailOutput, "utf8"),
+    stat(
+      new URL(
+        "../public/media/koi-no-voyage/eternal-blue.mp3",
+        import.meta.url,
+      ),
+    ),
+    stat(
+      new URL(
+        "../dist/client/media/koi-no-voyage/eternal-blue.mp3",
+        import.meta.url,
+      ),
+    ),
+    readFile(new URL("../app/BgmProvider.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(
+      new URL("../app/koi-no-koukai/CharacterGallery.tsx", import.meta.url),
+      "utf8",
+    ),
+    readFile(new URL("../vite.config.ts", import.meta.url), "utf8"),
+  ]);
+
+  for (const html of [mainHtml, detailHtml]) {
+    const audioTag = html.match(/<audio\b[^>]*data-site-bgm[^>]*>/)?.[0];
+    assert.ok(audioTag, "the shared BGM audio element is rendered");
+    assert.match(audioTag, /src="\/media\/koi-no-voyage\/eternal-blue\.mp3"/);
+    assert.match(audioTag, /\bloop(?:=""|(?=[\s>]))/);
+    assert.doesNotMatch(audioTag, /\bautoplay/i);
+    assert.match(html, /data-bgm-control/);
+    assert.match(html, /Eternal Blue/);
+  }
+
+  assert.match(mainHtml, /data-bgm-trigger="project-card"/);
+  assert.match(mainHtml, /data-bgm-trigger="gallery-card"/);
+  assert.ok(sourceAudio.size > 5_000_000 && sourceAudio.size < 8_000_000);
+  assert.equal(exportedAudio.size, sourceAudio.size);
+  assert.match(providerSource, /const TARGET_VOLUME = 0\.3/);
+  assert.match(providerSource, /const FADE_DURATION_MS = 900/);
+  assert.match(layoutSource, /<BgmProvider>{children}<\/BgmProvider>/);
+  assert.match(layoutSource, /data-rsc-content-type-bridge/);
+  assert.match(layoutSource, /contentType === "application\/octet-stream"/);
+  assert.match(layoutSource, /headers\.set\("content-type", "text\/x-component"\)/);
+  assert.match(homeSource, /import Link from "next\/link"/);
+  assert.match(gallerySource, /import Link from "next\/link"/);
+  assert.match(viteConfig, /process\.env\.__NEXT_ROUTER_BASEPATH/);
+  assert.ok(
+    mainHtml.indexOf("data-rsc-content-type-bridge") <
+      mainHtml.indexOf('<script id="_R_">'),
+    "the GitHub Pages RSC bridge runs before the application module",
+  );
 });

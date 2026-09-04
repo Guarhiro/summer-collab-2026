@@ -4,6 +4,8 @@
 
 import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { useBgm } from "./BgmProvider";
 
 type CSSVariableStyle = CSSProperties &
   Record<`--${string}`, string | number>;
@@ -105,6 +107,7 @@ const smoothstep = (edge0: number, edge1: number, value: number) => {
 export default function Home() {
   const shellRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { playBgm } = useBgm();
   const [isPaused, setIsPaused] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
@@ -326,6 +329,10 @@ export default function Home() {
             <article
               className="polaroid"
               data-project-card
+              data-bgm-trigger={project.external ? undefined : "project-card"}
+              onMouseEnter={project.external ? undefined : () => void playBgm()}
+              onFocusCapture={project.external ? undefined : () => void playBgm()}
+              onPointerDown={project.external ? undefined : () => void playBgm()}
               style={{ "--card-rotate": project.rotate } as CSSVariableStyle}
             >
               <span className="tape tape-top" aria-hidden="true" />
@@ -358,18 +365,29 @@ export default function Home() {
                   )}
                 </h2>
                 <p className="project-description">{project.description}</p>
-                <a
-                  className="project-link"
-                  href={project.external ? project.href : asset(project.href)}
-                  target={project.external ? "_blank" : undefined}
-                  rel={project.external ? "noreferrer" : undefined}
-                  data-placeholder-link={project.external || undefined}
-                >
-                  <span>
-                    {project.external ? `${project.title}を見る` : "12人のキャラクターを見る"}
-                  </span>
-                  {project.external ? <span aria-hidden="true">↗</span> : null}
-                </a>
+                {project.external ? (
+                  <a
+                    className="project-link"
+                    href={project.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-placeholder-link
+                  >
+                    <span>{project.title}を見る</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  <>
+                    <p className="project-bgm-hint">BGM / HOVER OR TAP TO PLAY</p>
+                    <Link
+                      className="project-link"
+                      href={project.href}
+                      onClick={() => void playBgm()}
+                    >
+                      <span>12人のキャラクターを見る</span>
+                    </Link>
+                  </>
+                )}
               </div>
               <span className="tape tape-bottom" aria-hidden="true" />
             </article>
@@ -397,22 +415,43 @@ export default function Home() {
             <div className="gallery-track">
               {[...projects, ...projects].map((project, index) => {
                 const duplicate = index >= projects.length;
-                return (
-                  <a
-                    className="gallery-card"
-                    href={project.external ? project.href : asset(project.href)}
-                    target={project.external ? "_blank" : undefined}
-                    rel={project.external ? "noreferrer" : undefined}
-                    key={`${project.id}-${index}`}
-                    tabIndex={duplicate ? -1 : 0}
-                    aria-hidden={duplicate || undefined}
-                  >
+                const cardContent = (
+                  <>
                     <img src={asset(project.image)} alt="" loading="lazy" />
                     <span>
                       <small>{project.chapter}</small>
                       {project.title}
                     </span>
+                  </>
+                );
+
+                return project.external ? (
+                  <a
+                    className="gallery-card"
+                    href={project.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    key={`${project.id}-${index}`}
+                    tabIndex={duplicate ? -1 : 0}
+                    aria-hidden={duplicate || undefined}
+                  >
+                    {cardContent}
                   </a>
+                ) : (
+                  <Link
+                    className="gallery-card"
+                    href={project.href}
+                    key={`${project.id}-${index}`}
+                    tabIndex={duplicate ? -1 : 0}
+                    aria-hidden={duplicate || undefined}
+                    data-bgm-trigger="gallery-card"
+                    onMouseEnter={() => void playBgm()}
+                    onFocus={() => void playBgm()}
+                    onPointerDown={() => void playBgm()}
+                    onClick={() => void playBgm()}
+                  >
+                    {cardContent}
+                  </Link>
                 );
               })}
             </div>

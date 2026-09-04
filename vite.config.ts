@@ -52,6 +52,19 @@ export default defineConfig(async () => {
       : undefined,
     plugins: [
       vinext(),
+      {
+        name: "public-base-path-navigation",
+        enforce: "post",
+        config() {
+          return {
+            define: {
+              "process.env.__NEXT_ROUTER_BASEPATH": JSON.stringify(
+                publicBasePath ?? "",
+              ),
+            },
+          };
+        },
+      },
       sites(),
       cloudflare({
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },

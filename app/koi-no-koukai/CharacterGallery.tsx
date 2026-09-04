@@ -3,6 +3,7 @@
 /* eslint-disable @next/next/no-img-element -- Static export uses base-path-aware public images. */
 
 import { useState } from "react";
+import Link from "next/link";
 import { ArrowLeft, Paperclip } from "lucide-react";
 import styles from "./cruise.module.css";
 
@@ -174,14 +175,14 @@ export default function CharacterGallery() {
       </div>
 
       <header className={styles.header}>
-        <a className={styles.brand} href={asset("/")}>
+        <Link className={styles.brand} href="/">
           <span>SUMMER COLLAB</span>
           <small>2026</small>
-        </a>
-        <a className={styles.backLink} href={asset("/")}>
+        </Link>
+        <Link className={styles.backLink} href="/">
           <ArrowLeft aria-hidden="true" size={18} strokeWidth={1.35} />
           <span>作品一覧へ戻る</span>
-        </a>
+        </Link>
       </header>
 
       <main className={styles.main}>

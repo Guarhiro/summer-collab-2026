@@ -645,6 +645,14 @@ main {
   line-height: 1.8;
 }
 
+.project-bgm-hint {
+  margin: -7px 0 11px;
+  color: color-mix(in srgb, var(--project-accent), #24363b 42%);
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
 .project-link {
   display: flex;
   align-items: center;
@@ -877,6 +885,104 @@ footer a:focus-visible {
   cursor: pointer;
 }
 
+[data-site-bgm] {
+  display: none;
+}
+
+.bgm-control {
+  position: fixed;
+  z-index: 45;
+  right: 30px;
+  bottom: 76px;
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 14px 7px 8px;
+  border: 1px solid rgba(105, 203, 211, 0.58);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(105, 203, 211, 0.12), transparent 60%),
+    rgba(3, 14, 24, 0.78);
+  color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 30px rgba(0, 5, 10, 0.28);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.bgm-control:hover,
+.bgm-control:focus-visible {
+  border-color: rgba(255, 255, 255, 0.92);
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+  background-color: rgba(3, 14, 24, 0.94);
+  transform: translateY(-2px);
+}
+
+.bgm-control.is-blocked {
+  border-color: rgba(233, 199, 147, 0.9);
+}
+
+.bgm-control-icon {
+  position: relative;
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  place-items: center;
+  border: 1px solid rgba(105, 203, 211, 0.52);
+  border-radius: 50%;
+  color: #dffcff;
+}
+
+.bgm-control-icon .bgm-note {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  opacity: 0.62;
+}
+
+.bgm-control-icon svg:last-child {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+}
+
+.bgm-control-copy {
+  display: grid;
+  gap: 1px;
+  text-align: left;
+}
+
+.bgm-control-copy small {
+  color: rgba(105, 203, 211, 0.82);
+  font-size: 6px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.bgm-control-copy strong {
+  font-family: var(--serif);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.bgm-control[data-bgm-state="playing"] .bgm-control-icon {
+  animation: bgm-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes bgm-pulse {
+  50% {
+    border-color: rgba(223, 252, 255, 0.9);
+    box-shadow: 0 0 0 4px rgba(105, 203, 211, 0.1);
+  }
+}
+
 .motion-toggle:hover,
 .motion-toggle:focus-visible {
   border-color: rgba(255, 255, 255, 0.9);
@@ -1099,6 +1205,24 @@ footer a:focus-visible {
     bottom: 16px;
   }
 
+  .bgm-control {
+    right: 16px;
+    bottom: 68px;
+    width: 42px;
+    height: 42px;
+    min-height: 42px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .bgm-control-copy {
+    display: none;
+  }
+
+  .bgm-control-icon {
+    border: 0;
+  }
+
   .motion-toggle > span:last-child {
     display: none;
   }
@@ -1126,6 +1250,10 @@ footer a:focus-visible {
 
   .background-poster {
     transform: none;
+  }
+
+  .bgm-control[data-bgm-state="playing"] .bgm-control-icon {
+    animation: none;
   }
 
   .light-leak,
