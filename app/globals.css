@@ -1321,13 +1321,19 @@ footer a:focus-visible {
   }
 }
 
-/* Keep the supplied first-work title artwork fully visible in landscape slots. */
+/* Fill list thumbnails with the upper portraits; detail artwork stays uncropped. */
 #work-01 .polaroid-photo { background: #e2f5fc; }
-#work-01 .polaroid-photo img { object-fit: contain; filter: none; }
+#work-01 .polaroid-photo img { object-fit: cover; object-position: 50% 20%; filter: none; }
 
-/* Keep the supplied second-work cover and its title fully visible. */
+/* Frame the second portrait around the face. */
 #work-02 .polaroid-photo { background: #e0f8fc; }
-#work-02 .polaroid-photo img { object-fit: contain; filter: none; }
+#work-02 .polaroid-photo img { object-fit: cover; object-position: 50% 12%; filter: none; }
 
 .gallery-work-credit { display: flex; flex-direction: column; gap: 4px; line-height: 1.3; }
 .gallery-work-credit small { font-size: 12px; letter-spacing: .03em; }
+
+/* Match the list gallery crops to the numbered work cards. */
+#work-03 .polaroid-photo img { object-position: 50% 22%; }
+.gallery-card img[src$="/tomodachi-oshi/cover.png"] { object-position: 50% 20%; }
+.gallery-card img[src$="/beach-beni/cover.png"] { object-position: 50% 12%; }
+.gallery-card img[src$="/saioshi-natsumatsuri/cover.png"] { object-position: 50% 22%; }
