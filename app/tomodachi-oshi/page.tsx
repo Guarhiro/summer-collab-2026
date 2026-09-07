@@ -33,6 +33,7 @@ export default function StoryPage() {
         <div className={styles.intro}>
           <p className={styles.label}>作品紹介</p>
           <h1 id="story-title">友達は<span>推しと</span>付き合いたい！</h1>
+          <p className={styles.label}>製作者：くいっく</p>
           <p className={styles.synopsis}>合コンで推しである三条 オト（さんじょう おと）と奇跡的な出会いをした柳田 莉音（やなぎだ りおん）。<br />あれから数ヶ月、夏がやってきた＿＿＿。</p>
           <blockquote>「お願い{'{{user}}'}、オト君海に誘ったから距離縮めるの手伝って！」</blockquote>
           <a className={styles.jump} href="#characters">登場人物を見る <span aria-hidden="true">↓</span></a>

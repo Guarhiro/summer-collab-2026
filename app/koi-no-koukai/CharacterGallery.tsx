@@ -211,6 +211,7 @@ export default function CharacterGallery() {
                 恋の航海
                 <span>~Voyage on the Eternal Blue~</span>
               </h1>
+              <p className={styles.creator}>製作者：ガルヒロ</p>
               <p className={styles.introduction}>
                 豪華クルーズ船「エターナル・ブルー号」に集まった、
                 個性豊かな男女12人。恋と嘘が揺れ動く7日間の航海へ。

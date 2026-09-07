@@ -19,7 +19,7 @@ const projects = [
     chapter: "01",
     englishTitle: "",
     title: "友達は推しと付き合いたい！",
-    credit: "2 CHARACTERS",
+    credit: "製作者：くいっく",
     description: "合コンで推しの三条 オトと奇跡的に出会った柳田 莉音。あれから数ヶ月、夏がやってきた＿＿＿。",
     image: "/media/tomodachi-oshi/cover.png",
     imageAlt: "友達は推しと付き合いたい！ 三条 オトと柳田 莉音のサムネイル",
@@ -83,7 +83,7 @@ const projects = [
     chapter: "05",
     englishTitle: "~Voyage on the Eternal Blue~",
     title: "恋の航海",
-    credit: "12 CHARACTERS",
+    credit: "製作者：ガルヒロ",
     description: "豪華客船に集った12人。13人目のあなたが、恋と嘘を見抜く7日間。",
     image: "/media/koi-no-voyage/cover-card.jpg",
     imageAlt: "豪華客船の前に集まった恋の航海の12人",
@@ -420,7 +420,12 @@ export default function Home() {
                     <img src={asset(project.image)} alt="" loading="lazy" />
                     <span>
                       <small>{project.chapter}</small>
-                      {project.title}
+                      {project.id === "work-01" || project.id === "work-05" ? (
+                        <span className="gallery-work-credit">
+                          {project.title}
+                          <small>{project.credit}</small>
+                        </span>
+                      ) : project.title}
                     </span>
                   </>
                 );

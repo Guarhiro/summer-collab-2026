@@ -544,3 +544,10 @@
     transition: none;
   }
 }
+
+.creator {
+  margin: 18px 0 0;
+  color: var(--cruise-cyan);
+  font-size: 14px;
+  line-height: 1.6;
+}

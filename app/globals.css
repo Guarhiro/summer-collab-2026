@@ -1324,3 +1324,6 @@ footer a:focus-visible {
 /* Keep the supplied first-work title artwork fully visible in landscape slots. */
 #work-01 .polaroid-photo { background: #e2f5fc; }
 #work-01 .polaroid-photo img { object-fit: contain; filter: none; }
+
+.gallery-work-credit { display: flex; flex-direction: column; gap: 4px; line-height: 1.3; }
+.gallery-work-credit small { font-size: 12px; letter-spacing: .03em; }
