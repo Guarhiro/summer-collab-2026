@@ -1325,5 +1325,9 @@ footer a:focus-visible {
 #work-01 .polaroid-photo { background: #e2f5fc; }
 #work-01 .polaroid-photo img { object-fit: contain; filter: none; }
 
+/* Keep the supplied second-work cover and its title fully visible. */
+#work-02 .polaroid-photo { background: #e0f8fc; }
+#work-02 .polaroid-photo img { object-fit: contain; filter: none; }
+
 .gallery-work-credit { display: flex; flex-direction: column; gap: 4px; line-height: 1.3; }
 .gallery-work-credit small { font-size: 12px; letter-spacing: .03em; }

@@ -31,7 +31,7 @@ test("exports the finished one-page exhibition", async () => {
   assert.match(html, /SUMMER COLLAB 2026/);
   assert.match(html, /あの夏を、/);
   assert.match(html, /友達は推しと付き合いたい！/);
-  assert.match(html, /潮騒ランデブー/);
+  assert.match(html, /ビーチでも紅に飾って！/);
   assert.match(html, /星灯りの約束/);
   assert.match(html, /風鈴花火/);
   assert.match(html, /恋の航海/);
