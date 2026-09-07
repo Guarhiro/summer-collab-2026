@@ -32,7 +32,7 @@ test("exports the finished one-page exhibition", async () => {
   assert.match(html, /あの夏を、/);
   assert.match(html, /友達は推しと付き合いたい！/);
   assert.match(html, /ビーチでも紅に飾って！/);
-  assert.match(html, /星灯りの約束/);
+  assert.match(html, /最推しと夏祭りデートなんだが？！/);
   assert.match(html, /風鈴花火/);
   assert.match(html, /恋の航海/);
   assert.match(html, /五つの物語/);

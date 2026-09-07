@@ -1,0 +1,13 @@
+.page.page {
+  --story-blue: #245582;
+  --story-pink: #b93868;
+  background: linear-gradient(145deg, #e8effa, #fff 48%, #fff0df);
+}
+.catchphrase {
+  margin: 34px 0;
+  padding-left: 22px;
+  border-left: 3px solid var(--story-pink);
+  color: var(--story-pink);
+  font-size: clamp(20px, 2vw, 25px);
+  line-height: 1.9;
+}
