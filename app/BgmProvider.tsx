@@ -13,7 +13,7 @@ import {
 import { usePathname } from "next/navigation";
 import { Music2, Pause, Play } from "lucide-react";
 
-type BgmTrack = "festival-heartbeat" | "eternal-blue" | "breezy-seaside-romance" | "sunny-beach-afternoon";
+export type BgmTrack = "festival-heartbeat" | "eternal-blue" | "breezy-seaside-romance" | "sunny-beach-afternoon";
 
 type BgmStatus = "idle" | "playing" | "paused" | "blocked";
 
@@ -21,6 +21,7 @@ type BgmContextValue = {
   isPlaying: boolean;
   playBgm: (track?: BgmTrack) => Promise<void>;
   pauseBgm: () => void;
+  followBgm: (track: BgmTrack) => void;
 };
 
 const TARGET_VOLUME = 0.3;
@@ -54,7 +55,8 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
     : pathname?.includes("/koi-no-koukai") ? "eternal-blue" : undefined;
   const [track, setTrack] = useState<BgmTrack>(routeTrack ?? "eternal-blue");
   const trackRef = useRef(track);
-  const audioSource = tracks[track].src;
+  const [audioSource] = useState(tracks[track].src);
+  const manuallyPausedRef = useRef(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const fadeFrameRef = useRef<number>(0);
   const playAttemptRef = useRef(0);
@@ -77,7 +79,7 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
       const startedAt = window.performance.now();
 
       const step = (now: number) => {
-        const progress = Math.min(1, (now - startedAt) / duration);
+        const progress = Math.max(0, Math.min(1, (now - startedAt) / duration));
         const eased = 1 - Math.pow(1 - progress, 3);
         audio.volume = startVolume + (targetVolume - startVolume) * eased;
 
@@ -107,6 +109,7 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
   }, [cancelFade]);
 
   const playBgm = useCallback(async (nextTrack?: BgmTrack) => {
+    manuallyPausedRef.current = false;
     if (nextTrack) selectTrack(nextTrack);
     const audio = audioRef.current;
     if (!audio) return;
@@ -135,7 +138,17 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
     }
   }, [cancelFade, fadeTo, selectTrack]);
 
+  const followBgm = useCallback((nextTrack: BgmTrack) => {
+    if (manuallyPausedRef.current) {
+      selectTrack(nextTrack);
+      setStatus("paused");
+      return;
+    }
+    void playBgm(nextTrack);
+  }, [playBgm, selectTrack]);
+
   const pauseBgm = useCallback(() => {
+    manuallyPausedRef.current = true;
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -148,10 +161,8 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!routeTrack || routeTrack === trackRef.current) return;
-    const resume = audioRef.current && !audioRef.current.paused;
-    selectTrack(routeTrack);
-    if (resume) void playBgm();
-  }, [routeTrack, selectTrack, playBgm]);
+    followBgm(routeTrack);
+  }, [routeTrack, followBgm]);
 
   useEffect(() => cancelFade, [cancelFade]);
 
@@ -160,8 +171,9 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
       isPlaying: status === "playing",
       playBgm,
       pauseBgm,
+      followBgm,
     }),
-    [pauseBgm, playBgm, status],
+    [pauseBgm, playBgm, followBgm, status],
   );
 
   const isPlaying = status === "playing";

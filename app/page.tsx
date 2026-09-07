@@ -5,7 +5,7 @@
 import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { useBgm } from "./BgmProvider";
+import { useBgm, type BgmTrack } from "./BgmProvider";
 
 type CSSVariableStyle = CSSProperties &
   Record<`--${string}`, string | number>;
@@ -107,9 +107,45 @@ const smoothstep = (edge0: number, edge1: number, value: number) => {
 export default function Home() {
   const shellRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const { playBgm } = useBgm();
+  const { playBgm, followBgm } = useBgm();
   const [isPaused, setIsPaused] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    let frame = 0;
+    let currentTrack: string | undefined;
+    const updateTrack = () => {
+      frame = 0;
+      const center = window.innerHeight / 2;
+      let closest: HTMLElement | undefined;
+      let distance = Infinity;
+      document.querySelectorAll<HTMLElement>("[data-project-card][data-bgm-track]").forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        if (rect.bottom <= 0 || rect.top >= window.innerHeight) return;
+        const nextDistance = Math.abs((rect.top + rect.bottom) / 2 - center);
+        if (nextDistance < distance) {
+          closest = card;
+          distance = nextDistance;
+        }
+      });
+      const nextTrack = closest?.dataset.bgmTrack;
+      if (nextTrack && nextTrack !== currentTrack) {
+        currentTrack = nextTrack;
+        followBgm(nextTrack as BgmTrack);
+      }
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateTrack);
+    };
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, [followBgm]);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -329,9 +365,8 @@ export default function Home() {
             <article
               className="polaroid"
               data-project-card
+              data-bgm-track={project.external ? undefined : (project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : "eternal-blue")}
               data-bgm-trigger={project.external ? undefined : "project-card"}
-              onMouseEnter={project.external ? undefined : () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : "eternal-blue")}
-              onFocusCapture={project.external ? undefined : () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : "eternal-blue")}
               onPointerDown={project.external ? undefined : () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : "eternal-blue")}
               style={{ "--card-rotate": project.rotate } as CSSVariableStyle}
             >
@@ -378,7 +413,7 @@ export default function Home() {
                   </a>
                 ) : (
                   <>
-                    {!project.external ? <p className="project-bgm-hint">BGM / HOVER OR TAP TO PLAY</p> : null}
+                    {!project.external ? <p className="project-bgm-hint">BGM / SCROLL TO SWITCH · TAP TO PLAY</p> : null}
                     <Link
                       className="project-link"
                       href={project.href}
@@ -450,8 +485,6 @@ export default function Home() {
                     tabIndex={duplicate ? -1 : 0}
                     aria-hidden={duplicate || undefined}
                     data-bgm-trigger={!project.external ? "gallery-card" : undefined}
-                    onMouseEnter={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : "eternal-blue") : undefined}
-                    onFocus={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : "eternal-blue") : undefined}
                     onPointerDown={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : "eternal-blue") : undefined}
                     onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : "eternal-blue") : undefined}
                   >
