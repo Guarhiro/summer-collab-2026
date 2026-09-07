@@ -17,14 +17,14 @@ const projects = [
   {
     id: "work-01",
     chapter: "01",
-    englishTitle: "BLUE HORIZON",
-    title: "青の境界",
-    credit: "COLLABORATOR A",
-    description: "潮風のなかで、三つの物語が静かに動き出す。",
-    image: "/media/summer-beach-trio.jpg",
-    imageAlt: "青空と海を背景に並ぶ三人の夏の一場面",
-    href: "https://example.com/?work=summer-collab-01",
-    external: true,
+    englishTitle: "",
+    title: "友達は推しと付き合いたい！",
+    credit: "2 CHARACTERS",
+    description: "合コンで推しの三条 オトと奇跡的に出会った柳田 莉音。あれから数ヶ月、夏がやってきた＿＿＿。",
+    image: "/media/tomodachi-oshi/cover.png",
+    imageAlt: "友達は推しと付き合いたい！ 三条 オトと柳田 莉音のサムネイル",
+    href: "/tomodachi-oshi/",
+    external: false,
     side: "left",
     rotate: "-3.5deg",
     accent: "#8bd9e8",
@@ -330,9 +330,9 @@ export default function Home() {
               className="polaroid"
               data-project-card
               data-bgm-trigger={project.external ? undefined : "project-card"}
-              onMouseEnter={project.external ? undefined : () => void playBgm()}
-              onFocusCapture={project.external ? undefined : () => void playBgm()}
-              onPointerDown={project.external ? undefined : () => void playBgm()}
+              onMouseEnter={project.external ? undefined : () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : "eternal-blue")}
+              onFocusCapture={project.external ? undefined : () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : "eternal-blue")}
+              onPointerDown={project.external ? undefined : () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : "eternal-blue")}
               style={{ "--card-rotate": project.rotate } as CSSVariableStyle}
             >
               <span className="tape tape-top" aria-hidden="true" />
@@ -355,14 +355,14 @@ export default function Home() {
                 ) : null}
                 <h2>
                   {project.title}
-                  {project.external ? null : (
+                  {project.englishTitle && !project.external ? (
                     <>
                       {" "}
                       <span className="project-title-english">
                         {project.englishTitle}
                       </span>
                     </>
-                  )}
+                  ) : null}
                 </h2>
                 <p className="project-description">{project.description}</p>
                 {project.external ? (
@@ -378,13 +378,13 @@ export default function Home() {
                   </a>
                 ) : (
                   <>
-                    <p className="project-bgm-hint">BGM / HOVER OR TAP TO PLAY</p>
+                    {!project.external ? <p className="project-bgm-hint">BGM / HOVER OR TAP TO PLAY</p> : null}
                     <Link
                       className="project-link"
                       href={project.href}
-                      onClick={() => void playBgm()}
+                      onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : "eternal-blue") : undefined}
                     >
-                      <span>12人のキャラクターを見る</span>
+                      <span>{project.id === "work-05" ? "12人のキャラクターを見る" : "作品紹介を見る"}</span>
                     </Link>
                   </>
                 )}
@@ -444,11 +444,11 @@ export default function Home() {
                     key={`${project.id}-${index}`}
                     tabIndex={duplicate ? -1 : 0}
                     aria-hidden={duplicate || undefined}
-                    data-bgm-trigger="gallery-card"
-                    onMouseEnter={() => void playBgm()}
-                    onFocus={() => void playBgm()}
-                    onPointerDown={() => void playBgm()}
-                    onClick={() => void playBgm()}
+                    data-bgm-trigger={!project.external ? "gallery-card" : undefined}
+                    onMouseEnter={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : "eternal-blue") : undefined}
+                    onFocus={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : "eternal-blue") : undefined}
+                    onPointerDown={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : "eternal-blue") : undefined}
+                    onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : "eternal-blue") : undefined}
                   >
                     {cardContent}
                   </Link>

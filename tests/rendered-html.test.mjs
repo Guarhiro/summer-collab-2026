@@ -30,7 +30,7 @@ test("exports the finished one-page exhibition", async () => {
   assert.match(html, /<html lang="ja"/i);
   assert.match(html, /SUMMER COLLAB 2026/);
   assert.match(html, /あの夏を、/);
-  assert.match(html, /青の境界/);
+  assert.match(html, /友達は推しと付き合いたい！/);
   assert.match(html, /潮騒ランデブー/);
   assert.match(html, /星灯りの約束/);
   assert.match(html, /風鈴花火/);
@@ -174,4 +174,41 @@ test("exports the persistent Eternal Blue BGM UI and audio", async () => {
       mainHtml.indexOf('<script id="_R_">'),
     "the GitHub Pages RSC bridge runs before the application module",
   );
+});
+
+test("the first work opens the supplied story and ships all five images", async () => {
+  const [home, story] = await Promise.all([
+    readFile(output, "utf8"),
+    readFile(new URL("../dist/client/tomodachi-oshi/index.html", import.meta.url), "utf8"),
+  ]);
+  assert.match(home, /<a\b(?=[^>]*class="project-link")(?=[^>]*href="\/tomodachi-oshi\/")[^>]*>/);
+  assert.doesNotMatch(home, /青の境界|summer-collab-01/);
+  for (const content of ["友達は", "付き合いたい！", "柳田 莉音", "三条 オト", "お願い{{user}}、オト君海に誘ったから距離縮めるの手伝って！", "むぶ", "最古参", "ASMR"]) {
+    assert.ok(story.replace(/<!--.*?-->/g, "").includes(content), `story includes ${content}`);
+  }
+  for (const filename of ["cover.png", "rion-1.png", "rion-2.png", "oto-1.png", "oto-2.png"]) {
+    const [original, exported] = await Promise.all([
+      readFile(new URL(`../public/media/tomodachi-oshi/${filename}`, import.meta.url)),
+      readFile(new URL(`../dist/client/media/tomodachi-oshi/${filename}`, import.meta.url)),
+    ]);
+    assert.deepEqual(exported, original);
+    assert.ok(story.includes(`/media/tomodachi-oshi/${filename}`));
+  }
+  assert.match(story, /href="\/#work-01"/);
+});
+
+test("the first story has its own looped soundtrack and title", async () => {
+  const html = await readFile(new URL("../dist/client/tomodachi-oshi/index.html", import.meta.url), "utf8");
+  const audio = html.match(/<audio\b[^>]*data-site-bgm[^>]*>/)?.[0];
+  assert.ok(audio);
+  assert.match(audio, /src="\/media\/tomodachi-oshi\/breezy-seaside-romance\.mp3"/);
+  assert.match(audio, /\bloop/);
+  assert.doesNotMatch(audio, /autoplay/);
+  assert.match(html, /BGMを再生：Breezy Seaside Romance/);
+  const [source, exported] = await Promise.all([
+    readFile(new URL("../public/media/tomodachi-oshi/breezy-seaside-romance.mp3", import.meta.url)),
+    readFile(new URL("../dist/client/media/tomodachi-oshi/breezy-seaside-romance.mp3", import.meta.url)),
+  ]);
+  assert.ok(source.length > 1_000_000);
+  assert.deepEqual(exported, source);
 });

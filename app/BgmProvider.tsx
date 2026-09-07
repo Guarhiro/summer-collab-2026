@@ -10,20 +10,26 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { usePathname } from "next/navigation";
 import { Music2, Pause, Play } from "lucide-react";
+
+type BgmTrack = "eternal-blue" | "breezy-seaside-romance";
 
 type BgmStatus = "idle" | "playing" | "paused" | "blocked";
 
 type BgmContextValue = {
   isPlaying: boolean;
-  playBgm: () => Promise<void>;
+  playBgm: (track?: BgmTrack) => Promise<void>;
   pauseBgm: () => void;
 };
 
 const TARGET_VOLUME = 0.3;
 const FADE_DURATION_MS = 900;
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const audioSource = `${basePath}/media/koi-no-voyage/eternal-blue.mp3`;
+const tracks = {
+  "eternal-blue": { title: "Eternal Blue", src: `${basePath}/media/koi-no-voyage/eternal-blue.mp3` },
+  "breezy-seaside-romance": { title: "Breezy Seaside Romance", src: `${basePath}/media/tomodachi-oshi/breezy-seaside-romance.mp3` },
+};
 
 const BgmContext = createContext<BgmContextValue | null>(null);
 
@@ -38,6 +44,13 @@ export function useBgm() {
 }
 
 export default function BgmProvider({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  const routeTrack: BgmTrack | undefined = pathname?.includes("/tomodachi-oshi")
+    ? "breezy-seaside-romance"
+    : pathname?.includes("/koi-no-koukai") ? "eternal-blue" : undefined;
+  const [track, setTrack] = useState<BgmTrack>(routeTrack ?? "eternal-blue");
+  const trackRef = useRef(track);
+  const audioSource = tracks[track].src;
   const audioRef = useRef<HTMLAudioElement>(null);
   const fadeFrameRef = useRef<number>(0);
   const playAttemptRef = useRef(0);
@@ -76,7 +89,21 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
     [cancelFade],
   );
 
-  const playBgm = useCallback(async () => {
+  const selectTrack = useCallback((nextTrack: BgmTrack) => {
+    const audio = audioRef.current;
+    if (!audio || nextTrack === trackRef.current) return;
+    playAttemptRef.current += 1;
+    cancelFade();
+    audio.pause();
+    trackRef.current = nextTrack;
+    audio.src = tracks[nextTrack].src;
+    audio.load();
+    setTrack(nextTrack);
+    setStatus("idle");
+  }, [cancelFade]);
+
+  const playBgm = useCallback(async (nextTrack?: BgmTrack) => {
+    if (nextTrack) selectTrack(nextTrack);
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -102,7 +129,7 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
       audio.volume = TARGET_VOLUME;
       setStatus("blocked");
     }
-  }, [cancelFade, fadeTo]);
+  }, [cancelFade, fadeTo, selectTrack]);
 
   const pauseBgm = useCallback(() => {
     const audio = audioRef.current;
@@ -114,6 +141,13 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
     audio.volume = TARGET_VOLUME;
     setStatus("paused");
   }, [cancelFade]);
+
+  useEffect(() => {
+    if (!routeTrack || routeTrack === trackRef.current) return;
+    const resume = audioRef.current && !audioRef.current.paused;
+    selectTrack(routeTrack);
+    if (resume) void playBgm();
+  }, [routeTrack, selectTrack, playBgm]);
 
   useEffect(() => cancelFade, [cancelFade]);
 
@@ -157,7 +191,7 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
         type="button"
         data-bgm-control
         data-bgm-state={status}
-        aria-label={`${buttonLabel}：Eternal Blue`}
+        aria-label={`${buttonLabel}：${tracks[track].title}`}
         aria-pressed={isPlaying}
         onClick={() => {
           if (isPlaying) {
@@ -177,7 +211,7 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
         </span>
         <span className="bgm-control-copy">
           <small>{statusLabel}</small>
-          <strong>Eternal Blue</strong>
+          <strong>{tracks[track].title}</strong>
         </span>
       </button>
     </BgmContext.Provider>

@@ -1320,3 +1320,7 @@ footer a:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+/* Keep the supplied first-work title artwork fully visible in landscape slots. */
+#work-01 .polaroid-photo { background: #e2f5fc; }
+#work-01 .polaroid-photo img { object-fit: contain; filter: none; }
