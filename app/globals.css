@@ -1359,3 +1359,7 @@ footer a:focus-visible {
 /* Use the dedicated landscape illustration in both work lists. */
 #work-10 .polaroid-photo img,
 .gallery-card[href$="/natsukage/"] img { object-fit: contain; object-position: center; background: #fff4df; filter: none; transform: none; }
+
+/* Preserve the complete supplied landscape title artwork for work 11. */
+#work-11 .polaroid-photo img,
+.gallery-card[href$="/natsuiro-oniisan/"] img { object-fit: contain; object-position: center; background: #e7faff; filter: none; transform: none; }
