@@ -1356,6 +1356,9 @@ footer a:focus-visible {
 .gallery-card[href$="/everlasting-summer-night/"] img { object-fit: cover; object-position: 50% 55%; filter: none; }
 #work-08 h2 { overflow-wrap: anywhere; }
 
+#work-09 .polaroid-photo img,
+.gallery-card[href$="/kimi-no-shiranai-natsu/"] img { object-fit: cover; object-position: 50% 22%; filter: none; }
+
 /* Use the dedicated landscape illustration in both work lists. */
 #work-10 .polaroid-photo img,
 .gallery-card[href$="/natsukage/"] img { object-fit: contain; object-position: center; background: #fff4df; filter: none; transform: none; }

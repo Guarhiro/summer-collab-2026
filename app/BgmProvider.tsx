@@ -13,7 +13,7 @@ import {
 import { usePathname } from "next/navigation";
 import { Music2, Pause, Play } from "lucide-react";
 
-export type BgmTrack = "poolside-afternoon" | "cicada-summer" | "neon-pool-reflections" | "moonlit-seaside-walk" | "turquoise-terrace" | "sunlit-rivalry" | "festival-heartbeat" | "eternal-blue" | "breezy-seaside-romance" | "sunny-beach-afternoon";
+export type BgmTrack = "summer-house-bell" | "poolside-afternoon" | "cicada-summer" | "neon-pool-reflections" | "moonlit-seaside-walk" | "turquoise-terrace" | "sunlit-rivalry" | "festival-heartbeat" | "eternal-blue" | "breezy-seaside-romance" | "sunny-beach-afternoon";
 
 type BgmStatus = "idle" | "playing" | "paused" | "blocked";
 
@@ -28,6 +28,7 @@ const TARGET_VOLUME = 0.3;
 const FADE_DURATION_MS = 900;
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const tracks = {
+  "summer-house-bell": { title: "Summer House Bell", src: `${basePath}/media/kimi-no-shiranai-natsu/summer-house-bell.mp3` },
   "poolside-afternoon": { title: "Poolside Afternoon", src: `${basePath}/media/natsuiro-oniisan/poolside-afternoon.mp3` },
   "cicada-summer": { title: "cicada summer", src: `${basePath}/media/natsukage/cicada-summer.mp3` },
   "neon-pool-reflections": { title: "Neon Pool Reflections", src: `${basePath}/media/everlasting-summer-night/neon-pool-reflections.mp3` },
@@ -63,6 +64,7 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
     : pathname?.includes("/summer-vampire") ? "moonlit-seaside-walk"
     : pathname?.includes("/natsuiro-oniisan") ? "poolside-afternoon"
     : pathname?.includes("/natsukage") ? "cicada-summer"
+    : pathname?.includes("/kimi-no-shiranai-natsu") ? "summer-house-bell"
     : pathname?.includes("/lepus") ? "turquoise-terrace"
     : pathname?.includes("/koi-no-koukai") ? "eternal-blue" : undefined;
   const [track, setTrack] = useState<BgmTrack>(routeTrack ?? "eternal-blue");
