@@ -13,7 +13,7 @@ import {
 import { usePathname } from "next/navigation";
 import { Music2, Pause, Play } from "lucide-react";
 
-export type BgmTrack = "neon-pool-reflections" | "moonlit-seaside-walk" | "turquoise-terrace" | "sunlit-rivalry" | "festival-heartbeat" | "eternal-blue" | "breezy-seaside-romance" | "sunny-beach-afternoon";
+export type BgmTrack = "cicada-summer" | "neon-pool-reflections" | "moonlit-seaside-walk" | "turquoise-terrace" | "sunlit-rivalry" | "festival-heartbeat" | "eternal-blue" | "breezy-seaside-romance" | "sunny-beach-afternoon";
 
 type BgmStatus = "idle" | "playing" | "paused" | "blocked";
 
@@ -28,6 +28,7 @@ const TARGET_VOLUME = 0.3;
 const FADE_DURATION_MS = 900;
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const tracks = {
+  "cicada-summer": { title: "cicada summer", src: `${basePath}/media/natsukage/cicada-summer.mp3` },
   "neon-pool-reflections": { title: "Neon Pool Reflections", src: `${basePath}/media/everlasting-summer-night/neon-pool-reflections.mp3` },
   "moonlit-seaside-walk": { title: "Moonlit Seaside Walk", src: `${basePath}/media/summer-vampire/moonlit-seaside-walk.mp3` },
   "turquoise-terrace": { title: "Turquoise Terrace", src: `${basePath}/media/lepus/turquoise-terrace.mp3` },
@@ -59,6 +60,7 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
     : pathname?.includes("/shinyu-gikei") ? "sunlit-rivalry"
     : pathname?.includes("/everlasting-summer-night") ? "neon-pool-reflections"
     : pathname?.includes("/summer-vampire") ? "moonlit-seaside-walk"
+    : pathname?.includes("/natsukage") ? "cicada-summer"
     : pathname?.includes("/lepus") ? "turquoise-terrace"
     : pathname?.includes("/koi-no-koukai") ? "eternal-blue" : undefined;
   const [track, setTrack] = useState<BgmTrack>(routeTrack ?? "eternal-blue");
