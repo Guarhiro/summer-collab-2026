@@ -126,6 +126,22 @@ const projects = [
     accent: "#65d5ed",
     sceneWord: "恋",
   },
+  {
+    id: "work-08",
+    chapter: "08",
+    englishTitle: "",
+    title: "EVERLASTING SUMMER NIGHT",
+    credit: "製作者：不動のアメジスチョ",
+    description: "臆病な陰キャが、愛する人を奪われそうになったときだけ見せる、抗えないDomの顔。内定を得ても消えなかった劣等感と、誰にも渡したくないほど重い愛情が、ネオン輝く真夏の夜に溢れ出す。",
+    image: "/media/everlasting-summer-night/cover.png",
+    imageAlt: "EVERLASTING SUMMER NIGHT 月城 柊のサムネイル",
+    href: "/everlasting-summer-night/",
+    external: false,
+    side: "right",
+    rotate: "2.6deg",
+    accent: "#ac8af4",
+    sceneWord: "夜",
+  },
 ] as const;
 
 const clamp = (value: number, min = 0, max = 1) =>
@@ -368,7 +384,7 @@ export default function Home() {
               <span>もう一度。</span>
             </h1>
             <p className="hero-lead">
-              ひとつの季節から生まれた、七つの物語。
+              ひとつの季節から生まれた、八つの物語。
               <br />
               スクロールして作品をめぐる小さな展覧会です。
             </p>
@@ -397,9 +413,9 @@ export default function Home() {
             <article
               className="polaroid"
               data-project-card
-              data-bgm-track={project.external ? undefined : (project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : "eternal-blue")}
+              data-bgm-track={project.external ? undefined : (project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : "eternal-blue")}
               data-bgm-trigger={project.external ? undefined : "project-card"}
-              onPointerDown={project.external ? undefined : () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : "eternal-blue")}
+              onPointerDown={project.external ? undefined : () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : "eternal-blue")}
               style={{ "--card-rotate": project.rotate } as CSSVariableStyle}
             >
               <span className="tape tape-top" aria-hidden="true" />
@@ -449,7 +465,7 @@ export default function Home() {
                     <Link
                       className="project-link"
                       href={project.href}
-                      onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : "eternal-blue") : undefined}
+                      onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : "eternal-blue") : undefined}
                     >
                       <span>{project.id === "work-05" ? "12人のキャラクターを見る" : "作品紹介を見る"}</span>
                     </Link>
@@ -471,7 +487,7 @@ export default function Home() {
         <section className="collection" id="collection">
           <div className="collection-heading">
             <p className="eyebrow">COLLABORATION ARCHIVE</p>
-            <h2>七つの夏を、ひとつに。</h2>
+            <h2>八つの夏を、ひとつに。</h2>
             <p>
               作品画像から、それぞれの物語へ。『恋の航海』では、
               豪華客船に乗り込む12人の参加者を紹介します。
@@ -517,8 +533,8 @@ export default function Home() {
                     tabIndex={duplicate ? -1 : 0}
                     aria-hidden={duplicate || undefined}
                     data-bgm-trigger={!project.external ? "gallery-card" : undefined}
-                    onPointerDown={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : "eternal-blue") : undefined}
-                    onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : "eternal-blue") : undefined}
+                    onPointerDown={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : "eternal-blue") : undefined}
+                    onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : "eternal-blue") : undefined}
                   >
                     {cardContent}
                   </Link>

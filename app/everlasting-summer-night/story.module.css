@@ -1,0 +1,4 @@
+.page.page { --story-blue: #345ab0; --story-pink: #8740ad; background: linear-gradient(145deg, #e4eeff, #faf7ff 48%, #e3faff); }
+.hero.hero { align-items: start; }
+.title.title { font-size: clamp(1.8rem, 3.5vw, 3rem); overflow-wrap: anywhere; line-height: 1.35; }
+.credit { font-size: 16px; }

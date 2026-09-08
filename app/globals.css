@@ -1352,3 +1352,6 @@ footer a:focus-visible {
   .gallery-card:not([aria-hidden="true"]) { display: block; }
 }
 
+#work-08 .polaroid-photo img,
+.gallery-card[href$="/everlasting-summer-night/"] img { object-fit: cover; object-position: 50% 55%; filter: none; }
+#work-08 h2 { overflow-wrap: anywhere; }
