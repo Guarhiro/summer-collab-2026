@@ -110,6 +110,22 @@ const projects = [
     accent: "#efb7cd",
     sceneWord: "兎",
   },
+  {
+    id: "work-07",
+    chapter: "07",
+    englishTitle: "",
+    title: "夏に恋した吸血鬼",
+    credit: "製作者：ミネス14世",
+    description: "現存する最後の吸血鬼と過ごす、ひと夏の恋物語。 太陽を60分だけ克服できる秘薬「蒼月の雫」を完成させた燈李は、何百年も憧れていた夏の海へ。そこで偶然出会ったあなたを軽いノリでナンパする。 海、ラムネ、夏祭り、花火⋯初めての夏を一緒に過ごすうち、ただの遊び相手だった二人の関係が少しずつ変わっていく。",
+    image: "/media/summer-vampire/cover.jpg",
+    imageAlt: "夏に恋した吸血鬼 瀬野燈李のサムネイル",
+    href: "/summer-vampire/",
+    external: false,
+    side: "left",
+    rotate: "-2deg",
+    accent: "#65d5ed",
+    sceneWord: "恋",
+  },
 ] as const;
 
 const clamp = (value: number, min = 0, max = 1) =>
@@ -352,7 +368,7 @@ export default function Home() {
               <span>もう一度。</span>
             </h1>
             <p className="hero-lead">
-              ひとつの季節から生まれた、六つの物語。
+              ひとつの季節から生まれた、七つの物語。
               <br />
               スクロールして作品をめぐる小さな展覧会です。
             </p>
@@ -381,9 +397,9 @@ export default function Home() {
             <article
               className="polaroid"
               data-project-card
-              data-bgm-track={project.external ? undefined : (project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : "eternal-blue")}
+              data-bgm-track={project.external ? undefined : (project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : "eternal-blue")}
               data-bgm-trigger={project.external ? undefined : "project-card"}
-              onPointerDown={project.external ? undefined : () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : "eternal-blue")}
+              onPointerDown={project.external ? undefined : () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : "eternal-blue")}
               style={{ "--card-rotate": project.rotate } as CSSVariableStyle}
             >
               <span className="tape tape-top" aria-hidden="true" />
@@ -433,7 +449,7 @@ export default function Home() {
                     <Link
                       className="project-link"
                       href={project.href}
-                      onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : "eternal-blue") : undefined}
+                      onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : "eternal-blue") : undefined}
                     >
                       <span>{project.id === "work-05" ? "12人のキャラクターを見る" : "作品紹介を見る"}</span>
                     </Link>
@@ -455,7 +471,7 @@ export default function Home() {
         <section className="collection" id="collection">
           <div className="collection-heading">
             <p className="eyebrow">COLLABORATION ARCHIVE</p>
-            <h2>六つの夏を、ひとつに。</h2>
+            <h2>七つの夏を、ひとつに。</h2>
             <p>
               作品画像から、それぞれの物語へ。『恋の航海』では、
               豪華客船に乗り込む12人の参加者を紹介します。
@@ -501,8 +517,8 @@ export default function Home() {
                     tabIndex={duplicate ? -1 : 0}
                     aria-hidden={duplicate || undefined}
                     data-bgm-trigger={!project.external ? "gallery-card" : undefined}
-                    onPointerDown={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : "eternal-blue") : undefined}
-                    onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : "eternal-blue") : undefined}
+                    onPointerDown={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : "eternal-blue") : undefined}
+                    onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : "eternal-blue") : undefined}
                   >
                     {cardContent}
                   </Link>

@@ -1344,3 +1344,11 @@ footer a:focus-visible {
 
 #work-06 .polaroid-photo img { object-fit: contain; object-position: center; filter: none; transform: none; }
 .gallery-card[href$="/lepus/"] img { object-fit: contain; object-position: center; background: #fff4f9; }
+
+/* Frame Tori's face in the lists; show the complete cover on the story page. */
+#work-07 .polaroid-photo img,
+.gallery-card[href$="/summer-vampire/"] img { object-fit: cover; object-position: 50% 60%; filter: none; }
+@media (prefers-reduced-motion: reduce) {
+  .gallery-card:not([aria-hidden="true"]) { display: block; }
+}
+
