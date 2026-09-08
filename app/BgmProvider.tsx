@@ -13,7 +13,7 @@ import {
 import { usePathname } from "next/navigation";
 import { Music2, Pause, Play } from "lucide-react";
 
-export type BgmTrack = "festival-heartbeat" | "eternal-blue" | "breezy-seaside-romance" | "sunny-beach-afternoon";
+export type BgmTrack = "sunlit-rivalry" | "festival-heartbeat" | "eternal-blue" | "breezy-seaside-romance" | "sunny-beach-afternoon";
 
 type BgmStatus = "idle" | "playing" | "paused" | "blocked";
 
@@ -28,6 +28,7 @@ const TARGET_VOLUME = 0.3;
 const FADE_DURATION_MS = 900;
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const tracks = {
+  "sunlit-rivalry": { title: "Sunlit Rivalry", src: `${basePath}/media/shinyu-gikei/sunlit-rivalry.mp3` },
   "festival-heartbeat": { title: "Festival Heartbeat", src: `${basePath}/media/saioshi-natsumatsuri/festival-heartbeat.mp3` },
   "sunny-beach-afternoon": { title: "晴れたビーチの午後", src: `${basePath}/media/beach-beni/sunny-beach-afternoon.mp3` },
   "eternal-blue": { title: "Eternal Blue", src: `${basePath}/media/koi-no-voyage/eternal-blue.mp3` },
@@ -52,6 +53,7 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
     ? "breezy-seaside-romance"
     : pathname?.includes("/saioshi-natsumatsuri") ? "festival-heartbeat"
     : pathname?.includes("/beach-beni") ? "sunny-beach-afternoon"
+    : pathname?.includes("/shinyu-gikei") ? "sunlit-rivalry"
     : pathname?.includes("/koi-no-koukai") ? "eternal-blue" : undefined;
   const [track, setTrack] = useState<BgmTrack>(routeTrack ?? "eternal-blue");
   const trackRef = useRef(track);

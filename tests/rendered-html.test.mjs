@@ -33,7 +33,7 @@ test("exports the finished one-page exhibition", async () => {
   assert.match(html, /友達は推しと付き合いたい！/);
   assert.match(html, /ビーチでも紅に飾って！/);
   assert.match(html, /最推しと夏祭りデートなんだが？！/);
-  assert.match(html, /風鈴花火/);
+  assert.match(html, /親友と義兄の仁義なき夏の休日/);
   assert.match(html, /恋の航海/);
   assert.match(html, /五つの物語/);
   assert.match(html, /href="\/koi-no-koukai\/"/);

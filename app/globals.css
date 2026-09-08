@@ -1337,3 +1337,7 @@ footer a:focus-visible {
 .gallery-card img[src$="/tomodachi-oshi/cover.png"] { object-position: 50% 20%; }
 .gallery-card img[src$="/beach-beni/cover.png"] { object-position: 50% 12%; }
 .gallery-card img[src$="/saioshi-natsumatsuri/cover.png"] { object-position: 50% 22%; }
+
+/* Keep both faces visible in the fourth work's landscape thumbnails. */
+#work-04 .polaroid-photo img,
+.gallery-card img[src$="/shinyu-gikei/cover.png"] { object-position: 50% 0%; }
