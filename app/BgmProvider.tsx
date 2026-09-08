@@ -13,7 +13,7 @@ import {
 import { usePathname } from "next/navigation";
 import { Music2, Pause, Play } from "lucide-react";
 
-export type BgmTrack = "oni-training-candy-forecast" | "egao-sunlit-rivalry" | "summer-house-bell" | "poolside-afternoon" | "cicada-summer" | "neon-pool-reflections" | "moonlit-seaside-walk" | "turquoise-terrace" | "sunlit-rivalry" | "festival-heartbeat" | "eternal-blue" | "breezy-seaside-romance" | "sunny-beach-afternoon";
+export type BgmTrack = "shiokaze-to-ato-ippo" | "oni-training-candy-forecast" | "egao-sunlit-rivalry" | "summer-house-bell" | "poolside-afternoon" | "cicada-summer" | "neon-pool-reflections" | "moonlit-seaside-walk" | "turquoise-terrace" | "sunlit-rivalry" | "festival-heartbeat" | "eternal-blue" | "breezy-seaside-romance" | "sunny-beach-afternoon";
 
 type BgmStatus = "idle" | "playing" | "paused" | "blocked";
 
@@ -28,6 +28,7 @@ const TARGET_VOLUME = 0.3;
 const FADE_DURATION_MS = 900;
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const tracks = {
+  "shiokaze-to-ato-ippo": { title: "潮風と、あと一歩", src: `${basePath}/media/koimiman/shiokaze-to-ato-ippo.mp3` },
   "oni-training-candy-forecast": { title: "鬼訓練のち、飴予報", src: `${basePath}/media/gachimuchi-paisen/oni-training-candy-forecast.mp3` },
   "egao-sunlit-rivalry": { title: "Sunlit Rivalry-2", src: `${basePath}/media/egao-kensei/sunlit-rivalry-2.mp3` },
   "summer-house-bell": { title: "Summer House Bell", src: `${basePath}/media/kimi-no-shiranai-natsu/summer-house-bell.mp3` },
@@ -61,6 +62,7 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
     ? "breezy-seaside-romance"
     : pathname?.includes("/saioshi-natsumatsuri") ? "festival-heartbeat"
     : pathname?.includes("/beach-beni") ? "sunny-beach-afternoon"
+    : pathname?.includes("/koimiman") ? "shiokaze-to-ato-ippo"
     : pathname?.includes("/gachimuchi-paisen") ? "oni-training-candy-forecast"
     : pathname?.includes("/egao-kensei") ? "egao-sunlit-rivalry"
     : pathname?.includes("/shinyu-gikei") ? "sunlit-rivalry"

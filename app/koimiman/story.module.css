@@ -1,0 +1,6 @@
+.page.page { --story-blue: #087daf; --story-pink: #bc3569; background: linear-gradient(145deg, #ddf6ff, #fff 48%, #fff0f5); }
+.credit { font-size: 16px; }
+.choices.choices { flex-wrap: wrap; gap: 10px; }
+.choices button { gap: 8px; padding-right: 10px; }
+.choices img { object-position: 50% 18%; }
+.portrait.portrait { aspect-ratio: 2 / 3; }
