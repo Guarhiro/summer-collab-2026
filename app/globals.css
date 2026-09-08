@@ -1341,3 +1341,6 @@ footer a:focus-visible {
 /* Keep both faces visible in the fourth work's landscape thumbnails. */
 #work-04 .polaroid-photo img,
 .gallery-card img[src$="/shinyu-gikei/cover.png"] { object-position: 50% 0%; }
+
+#work-06 .polaroid-photo img { object-fit: contain; object-position: center; filter: none; transform: none; }
+.gallery-card[href$="/lepus/"] img { object-fit: contain; object-position: center; background: #fff4f9; }

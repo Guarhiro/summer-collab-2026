@@ -94,6 +94,22 @@ const projects = [
     accent: "#69cbd3",
     sceneWord: "航",
   },
+  {
+    id: "work-06",
+    chapter: "06",
+    englishTitle: "",
+    title: "Lepusバニーボーイ専門店出張篇",
+    credit: "製作者：純粋なヒヨコ86637",
+    description: "Lepus Beach Resort ― この夏だけの、海辺の特別営業 ― いつものLepusが夏だけ南国リゾートへ。海辺の開放的な空間で、個性豊かなバニーボーイたちがお客様をお迎えします。",
+    image: "/media/lepus/cover-wide-v1.png",
+    imageAlt: "Lepus Beach Resortのアイ・凛・雪・氷牙、4人の横長サムネイル",
+    href: "/lepus/",
+    external: false,
+    side: "right",
+    rotate: "2deg",
+    accent: "#efb7cd",
+    sceneWord: "兎",
+  },
 ] as const;
 
 const clamp = (value: number, min = 0, max = 1) =>
@@ -336,7 +352,7 @@ export default function Home() {
               <span>もう一度。</span>
             </h1>
             <p className="hero-lead">
-              ひとつの季節から生まれた、五つの物語。
+              ひとつの季節から生まれた、六つの物語。
               <br />
               スクロールして作品をめぐる小さな展覧会です。
             </p>
@@ -365,9 +381,9 @@ export default function Home() {
             <article
               className="polaroid"
               data-project-card
-              data-bgm-track={project.external ? undefined : (project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : "eternal-blue")}
+              data-bgm-track={project.external ? undefined : (project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : "eternal-blue")}
               data-bgm-trigger={project.external ? undefined : "project-card"}
-              onPointerDown={project.external ? undefined : () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : "eternal-blue")}
+              onPointerDown={project.external ? undefined : () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : "eternal-blue")}
               style={{ "--card-rotate": project.rotate } as CSSVariableStyle}
             >
               <span className="tape tape-top" aria-hidden="true" />
@@ -417,7 +433,7 @@ export default function Home() {
                     <Link
                       className="project-link"
                       href={project.href}
-                      onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : "eternal-blue") : undefined}
+                      onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : "eternal-blue") : undefined}
                     >
                       <span>{project.id === "work-05" ? "12人のキャラクターを見る" : "作品紹介を見る"}</span>
                     </Link>
@@ -439,7 +455,7 @@ export default function Home() {
         <section className="collection" id="collection">
           <div className="collection-heading">
             <p className="eyebrow">COLLABORATION ARCHIVE</p>
-            <h2>五つの夏を、ひとつに。</h2>
+            <h2>六つの夏を、ひとつに。</h2>
             <p>
               作品画像から、それぞれの物語へ。『恋の航海』では、
               豪華客船に乗り込む12人の参加者を紹介します。
@@ -485,8 +501,8 @@ export default function Home() {
                     tabIndex={duplicate ? -1 : 0}
                     aria-hidden={duplicate || undefined}
                     data-bgm-trigger={!project.external ? "gallery-card" : undefined}
-                    onPointerDown={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : "eternal-blue") : undefined}
-                    onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : "eternal-blue") : undefined}
+                    onPointerDown={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : "eternal-blue") : undefined}
+                    onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : "eternal-blue") : undefined}
                   >
                     {cardContent}
                   </Link>

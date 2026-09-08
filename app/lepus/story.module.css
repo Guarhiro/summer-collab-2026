@@ -1,0 +1,10 @@
+.page.page { --story-blue: #8e3967; --story-pink: #b2356d; background: linear-gradient(140deg, #fff4f9, #fff 48%, #e9faff); }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 44px 60px; align-items: center; padding: 48px 0 90px; }
+.cover { grid-column: 1 / -1; margin: 0; border: 6px solid white; box-shadow: 0 18px 50px #6f355421; }
+.cover img, .resort img { display: block; width: 100%; height: auto; }
+.intro h1 { font-size: clamp(28px, 3vw, 42px); overflow-wrap: anywhere; }
+.logo { display: block; width: min(100%, 280px); height: auto; }
+.credit { font-size: 16px; }
+.resort { margin: 0; border: 6px solid white; box-shadow: 0 18px 50px #6f355421; }
+.portrait.portrait { aspect-ratio: 1; background: linear-gradient(150deg, #fff, #fbeaf1); }
+@media (max-width: 700px) { .hero { grid-template-columns: 1fr; gap: 30px; padding: 30px 0 60px; } .cover { grid-column: auto; } }
