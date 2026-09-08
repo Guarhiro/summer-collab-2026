@@ -1366,3 +1366,7 @@ footer a:focus-visible {
 /* Preserve the complete supplied landscape title artwork for work 11. */
 #work-11 .polaroid-photo img,
 .gallery-card[href$="/natsuiro-oniisan/"] img { object-fit: contain; object-position: center; background: #e7faff; filter: none; transform: none; }
+
+/* Show the complete text-free artwork in work 12 listings. */
+#work-12 .polaroid-photo img,
+.gallery-card[href$="/egao-kensei/"] img { object-fit: contain; object-position: center; background: #d9f6ff; filter: none; transform: none; }
