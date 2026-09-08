@@ -1,0 +1,7 @@
+.page.page { --story-blue: #076b82; --story-pink: #86601b; background: linear-gradient(145deg, #daf6f8, #fff 48%, #fff4d5); }
+.bio > p { font-size: 16px; line-height: 2.1; }
+.sweet { color: #a23648; font-weight: 700; }
+.portrait.portrait { aspect-ratio: 1 / 1; object-fit: contain; }
+.choices.choices { flex-wrap: wrap; gap: 8px; }
+.choices.choices button { padding: 5px; gap: 6px; font-size: 14px; }
+.choices.choices img { height: 56px; }
