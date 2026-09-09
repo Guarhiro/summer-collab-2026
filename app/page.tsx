@@ -6,6 +6,7 @@ import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useBgm, type BgmTrack } from "./BgmProvider";
+import { scrollToSection } from "./scrollToSection";
 
 type CSSVariableStyle = CSSProperties &
   Record<`--${string}`, string | number>;
@@ -463,7 +464,7 @@ export default function Home() {
       </div>
 
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="ページ最上部へ">
+        <a className="brand" href="#top" onClick={scrollToSection} aria-label="ページ最上部へ">
           <span className="brand-mark">S</span>
           <span className="brand-copy">
             SUMMER COLLAB
@@ -477,7 +478,7 @@ export default function Home() {
         <span className="rail-track" />
         <span className="rail-progress" />
         {projects.map((project) => (
-          <a href={`#${project.id}`} key={project.id}>
+          <a href={`#${project.id}`} onClick={scrollToSection} key={project.id}>
             <span>{project.chapter}</span>
             <span className="sr-only">{project.title}へ移動</span>
           </a>
@@ -501,7 +502,7 @@ export default function Home() {
               スクロールして作品をめぐる小さな展覧会です。
             </p>
           </div>
-          <a className="scroll-cue" href="#work-01">
+          <a className="scroll-cue" href="#work-01" onClick={scrollToSection}>
             <span>SCROLL TO DISCOVER</span>
             <i aria-hidden="true" />
           </a>
@@ -663,7 +664,7 @@ export default function Home() {
 
           <footer>
             <p>SUMMER COLLABORATION 2026</p>
-            <a href="#top">BACK TO TOP ↑</a>
+            <a href="#top" onClick={scrollToSection}>BACK TO TOP ↑</a>
           </footer>
         </section>
       </main>
