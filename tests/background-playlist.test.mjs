@@ -49,15 +49,15 @@ function setup() {
   };
 }
 
-test("each shuffle round includes all twelve clips without a repeat at its boundary", () => {
+test("each shuffle round includes every clip without a repeat at its boundary", () => {
   const { paths, createShuffleBag } = setup();
   // Extremes exercise the boundary correction as well as ordinary shuffles.
   for (const random of [() => 0, () => 0.999999, Math.random]) {
     const next = createShuffleBag(paths, random);
     let last;
     for (let round = 0; round < 50; round++) {
-      const clips = Array.from({ length: 12 }, next);
-      assert.equal(new Set(clips).size, 12);
+      const clips = Array.from({ length: paths.length }, next);
+      assert.equal(new Set(clips).size, paths.length);
       assert.deepEqual([...clips].sort(), [...paths].sort());
       assert.notEqual(clips[0], last);
       last = clips.at(-1);
@@ -74,8 +74,8 @@ test("starts one muted clip and advances on completion with the deployment base 
   assert.equal(video.muted, true);
   assert.equal(video.loop, false);
   assert.equal(video.playbackRate, 0.72);
-  for (let count = 1; count < 12; count++) emit("ended");
-  assert.equal(new Set(video.loads).size, 12);
+  for (let count = 1; count < paths.length; count++) emit("ended");
+  assert.equal(new Set(video.loads).size, paths.length);
   const last = video.src;
   emit("ended");
   assert.notEqual(video.src, last);
@@ -119,14 +119,14 @@ test("reduced motion can keep the poster without loading clips; a hidden ending 
 });
 
 test("failed clips are skipped, and an entirely unavailable playlist stops instead of looping requests", () => {
-  const { video, playback, emit, pauseRequests } = setup();
+  const { video, playback, emit, pauseRequests, paths } = setup();
   playback.setPaused(false);
   const failed = video.src;
   emit("error");
   assert.notEqual(video.src, failed);
   for (let count = 0; count < 24; count++) emit("ended");
   assert.equal(video.loads.slice(1).includes(failed), false);
-  for (let count = 1; count < 12; count++) emit("error");
+  for (let count = 1; count < paths.length; count++) emit("error");
   assert.equal(pauseRequests(), 1);
   const attempts = video.loads.length;
   emit("canplay");

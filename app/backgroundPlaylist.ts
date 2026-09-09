@@ -1,5 +1,5 @@
 export const backgroundClips = Array.from(
-  { length: 12 },
+  { length: 13 },
   (_, index) => `/media/background-clips/clip-${String(index + 1).padStart(2, "0")}.mp4`,
 );
 
