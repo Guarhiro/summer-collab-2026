@@ -148,7 +148,7 @@ const projects = [
     chapter: "09",
     englishTitle: "",
     title: "きみの知らない夏がある",
-    credit: "製作者：おさかな",
+    credit: "製作者：さかなししゃも",
     description: "7月18日の海開きの日、海へ遊びに来た{{user}}は、海の家「SUNNY」で働く蒼凪陽と出会う。 明るく人懐っこい陽に気に入られ、海水浴や海の家での手伝い、夏祭り、花火大会などを一緒に楽しみながら、45日間の夏を過ごしていく。",
     image: "/media/kimi-no-shiranai-natsu/cover.png",
     imageAlt: "きみの知らない夏がある 蒼凪 陽のサムネイル",

@@ -20,7 +20,7 @@ const bio = [
 ];
 export const metadata: Metadata = {
   title: `${title}｜SUMMER COLLAB 2026`,
-  description: `おさかな制作。${story[0]}`,
+  description: `さかなししゃも制作。${story[0]}`,
 };
 export default function StoryPage() {
   return (
@@ -31,7 +31,7 @@ export default function StoryPage() {
         <div className={styles.intro}>
           <p className={styles.label}>作品紹介</p>
           <h1 id="story-title">{title}</h1>
-          <p className={theme.credit}>製作者：おさかな</p>
+          <p className={theme.credit}>製作者：さかなししゃも</p>
           {story.map(paragraph => <p className={styles.synopsis} key={paragraph}>{paragraph}</p>)}
           <blockquote>蠖ｼ縺ｯ螟上′邨ゅｏ繧九→豸医∴繧?</blockquote>
           <a className={styles.jump} href="#characters">登場人物を見る <span aria-hidden="true">↓</span></a>
