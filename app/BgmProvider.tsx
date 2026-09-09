@@ -13,7 +13,7 @@ import {
 import { usePathname } from "next/navigation";
 import { Music2, Pause, Play } from "lucide-react";
 
-export type BgmTrack = "ghost-midnight-swing" | "kimi-to-isshukan" | "harenoya-koi-no-gogo" | "shiokaze-to-ato-ippo" | "oni-training-candy-forecast" | "egao-sunlit-rivalry" | "summer-house-bell" | "poolside-afternoon" | "cicada-summer" | "neon-pool-reflections" | "moonlit-seaside-walk" | "turquoise-terrace" | "sunlit-rivalry" | "festival-heartbeat" | "eternal-blue" | "breezy-seaside-romance" | "sunny-beach-afternoon";
+export type BgmTrack = "yoyu-zero-summer-breeze" | "ghost-midnight-swing" | "kimi-to-isshukan" | "harenoya-koi-no-gogo" | "shiokaze-to-ato-ippo" | "oni-training-candy-forecast" | "egao-sunlit-rivalry" | "summer-house-bell" | "poolside-afternoon" | "cicada-summer" | "neon-pool-reflections" | "moonlit-seaside-walk" | "turquoise-terrace" | "sunlit-rivalry" | "festival-heartbeat" | "eternal-blue" | "breezy-seaside-romance" | "sunny-beach-afternoon";
 
 type BgmStatus = "idle" | "playing" | "paused" | "blocked";
 
@@ -28,6 +28,7 @@ const TARGET_VOLUME = 0.3;
 const FADE_DURATION_MS = 900;
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const tracks = {
+  "yoyu-zero-summer-breeze": { title: "余裕ゼロのサマーブリーズ", src: `${basePath}/media/ayumu-summer/yoyu-zero-summer-breeze.mp3` },
   "ghost-midnight-swing": { title: "びびり幽霊のミッドナイト・スウィング", src: `${basePath}/media/kimodameshi/midnight-swing.mp3` },
   "kimi-to-isshukan": { title: "きみと一週間、まだ秘密。", src: `${basePath}/media/hakata-riri/kimi-to-isshukan.mp3` },
   "harenoya-koi-no-gogo": { title: "はれの屋、恋の午後", src: `${basePath}/media/harenoya/harenoya-koi-no-gogo.mp3` },
@@ -65,6 +66,7 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
     ? "breezy-seaside-romance"
     : pathname?.includes("/saioshi-natsumatsuri") ? "festival-heartbeat"
     : pathname?.includes("/beach-beni") ? "sunny-beach-afternoon"
+    : pathname?.includes("/ayumu-summer") ? "yoyu-zero-summer-breeze"
     : pathname?.includes("/kimodameshi") ? "ghost-midnight-swing"
     : pathname?.includes("/hakata-riri") ? "kimi-to-isshukan"
     : pathname?.includes("/harenoya") ? "harenoya-koi-no-gogo"
