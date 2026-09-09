@@ -678,8 +678,7 @@ export default function Home() {
             <p className="eyebrow">COLLABORATION ARCHIVE</p>
             <h2>{projects.length}の夏を、ひとつに。</h2>
             <p>
-              作品画像から、それぞれの物語へ。『恋の航海』では、
-              豪華客船に乗り込む12人の参加者を紹介します。
+              作品画像から、それぞれの物語へ。
             </p>
           </div>
 
