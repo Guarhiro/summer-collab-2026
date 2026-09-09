@@ -1,0 +1,118 @@
+.page {
+  --ink: #204c59;
+  --muted: #576b70;
+  color: var(--ink);
+  background: #fffdf8;
+  min-height: 100vh;
+  color-scheme: light;
+  padding: 0 clamp(20px, 5vw, 80px);
+}
+.page * { box-sizing: border-box; }
+.page a { color: inherit; }
+.page a:focus-visible, .page button:focus-visible { outline: 3px solid #14799b; outline-offset: 6px; }
+.header, .hero, .stories, .details, .footer { max-width: 1280px; margin: 0 auto; }
+.header { display: flex; justify-content: space-between; gap: 24px; align-items: center; min-height: 90px; border-bottom: 1px solid #204c592b; font-size: .875rem; letter-spacing: .08em; }
+.header a { text-decoration: none; font-weight: 700; }
+.header a span { margin-left: 8px; font-weight: 400; }
+.header > span { font-size: .75rem; color: var(--muted); }
+.hero { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.5fr); align-items: center; gap: clamp(24px, 4vw, 60px); padding: 64px 0 80px; }
+.eyebrow { font-size: .875rem; line-height: 1.8; letter-spacing: .1em; margin: 0 0 18px; font-weight: 700; }
+.hero h1 { font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(4rem, 7.4vw, 7rem); line-height: 1.15; letter-spacing: .06em; font-weight: 600; margin: 26px 0; }
+.hero h1 > span { display: block; font-size: .44em; letter-spacing: .12em; margin-bottom: 12px; }
+.seriesNames { font-size: .875rem; line-height: 2; font-weight: 700; }
+.seriesNames span { margin: 0 3px; color: #b0b7b5; }
+.credit { font-size: .875rem; margin: 20px 0 30px; }
+.heroLead { font-size: 1rem; line-height: 2; margin: 0 0 28px; }
+.jump { display: inline-flex; justify-content: space-between; gap: 32px; align-items: center; padding: 13px 0; border-bottom: 1px solid; font-size: .875rem; text-decoration: none; }
+.ensemble { margin: 0; transform: rotate(1deg); background: #fff; box-shadow: 0 16px 45px #204c5918; border: 10px solid #fff; }
+.ensemble > img { display: block; width: 100%; height: auto; }
+.ensemble figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 16px 6px 7px; font-size: .75rem; letter-spacing: .14em; }
+.ensemble figcaption span { color: var(--muted); }
+.stories { padding: 48px 0 80px; border-top: 1px solid #204c592b; scroll-margin-top: 30px; }
+.sectionHeading { text-align: center; margin-bottom: 36px; }
+.sectionHeading h2 { font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.6; margin: 0 0 12px; }
+.sectionHeading > p:last-child { font-size: 1rem; color: var(--muted); line-height: 1.8; }
+.storyCards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 3vw, 40px); max-width: 1000px; margin: 0 auto; }
+.haru { --accent: #a73d60; --wash: #fff2f5; }
+.touka { --accent: #126c82; --wash: #ecf9fc; }
+.rino { --accent: #77558e; --wash: #f6f0fc; }
+.storyCard { display: block; background: #fff; text-decoration: none; border-bottom: 3px solid var(--accent); transition: transform 180ms ease; }
+.storyCard:hover { transform: translateY(-5px); }
+.storyCard > img { display: block; width: 100%; height: auto; }
+.cardCaption { display: flex; align-items: center; gap: 12px; padding: 20px 10px; color: var(--accent); }
+.cardNumber { font-size: .875rem; letter-spacing: .08em; }
+.cardCaption strong { display: block; font-size: 1.05rem; line-height: 1.6; }
+.cardCaption small { display: block; font-size: .875rem; color: var(--muted); margin-top: 6px; }
+.cardArrow { margin-left: auto; }
+.story { padding: 64px 0 80px; border-top: 1px solid #204c592b; scroll-margin-top: 24px; }
+.storyHeading { display: flex; gap: 28px; align-items: center; margin-bottom: 36px; color: var(--accent); }
+.storyNumber { font-family: Georgia, serif; font-size: clamp(3.5rem, 8vw, 6rem); line-height: 1; opacity: .6; }
+.storyHeading h2 { font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1.55; margin: 0; }
+.storyHeading h2 > span { display: block; font-family: inherit; font-size: 1rem; letter-spacing: .14em; margin-bottom: 7px; }
+.storyContent { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1fr); gap: clamp(28px, 6vw, 80px); align-items: center; }
+.portraits { min-width: 0; max-width: 470px; width: 100%; margin: 0 auto; }
+.portraitFrame { aspect-ratio: 2 / 3; background: var(--wash); }
+.portrait { display: block; width: 100%; height: 100%; object-fit: contain; }
+.choices { display: flex; justify-content: center; gap: 16px; padding-top: 18px; }
+.choices button { display: flex; gap: 12px; align-items: center; padding: 5px 16px 5px 5px; background: #fff; border: 2px solid #b4c2c7; border-radius: 0; color: var(--ink); font: inherit; font-size: .875rem; cursor: pointer; }
+.choices button[aria-pressed="true"] { border-color: var(--accent); background: var(--wash); color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.choices button > img { width: 40px; height: 52px; object-fit: cover; object-position: 50% 20%; }
+.storyText { min-width: 0; }
+.synopsis { padding-bottom: 28px; }
+.textLabel { margin: 0 0 16px; font-size: .875rem; font-weight: 700; letter-spacing: .1em; color: var(--accent); }
+.synopsis > p, .bio > p:last-child { font-size: 1rem; line-height: 2.1; margin: 0; overflow-wrap: anywhere; }
+.bio { padding: 28px clamp(20px, 3vw, 36px); background: var(--wash); border-left: 3px solid var(--accent); }
+.role { display: flex; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: .875rem; line-height: 1.8; margin: 20px 0 8px; }
+.role span { border-left: 1px solid #a3adb0; padding-left: 16px; }
+.bio h3 { font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(1.8rem, 3vw, 2.3rem); line-height: 1.5; margin: 0 0 22px; }
+.bio h3 small { display: block; color: var(--muted); font-size: .875rem; font-weight: 400; letter-spacing: .16em; margin-top: 4px; }
+.backToStories { display: inline-flex; align-items: center; gap: 24px; margin-top: 25px; min-height: 44px; font-size: .875rem; text-underline-offset: 6px; }
+.footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; border-top: 1px solid #204c592b; padding: 36px 0 110px; font-size: .875rem; line-height: 1.8; }
+.footer a { padding: 10px 0; text-underline-offset: 6px; }
+.footer > span { text-align: right; }
+.footer small { display: block; font-size: .75rem; color: var(--muted); }
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; gap: 36px; padding-top: 40px; }
+  .heroCopy { text-align: center; }
+  .hero h1 { font-size: 5rem; margin: 18px 0; }
+  .hero h1 > span { display: inline; font-size: .55em; margin-right: 10px; }
+  .heroLead br { display: none; }
+  .credit { margin: 14px 0; }
+  .heroLead { margin-bottom: 14px; }
+  .ensemble { max-width: 800px; width: 100%; margin: 0 auto; transform: none; }
+  .storyContent { align-items: start; gap: 28px; }
+  .cardNumber { display: none; }
+}
+@media (max-width: 640px) {
+  .header { min-height: 76px; gap: 14px; flex-wrap: wrap; padding: 16px 0; font-size: .75rem; }
+  .header > span { font-size: .75rem; }
+  .hero { padding-bottom: 40px; }
+  .hero h1 { font-size: clamp(3.1rem, 12vw, 4.5rem); }
+  .hero h1 > span { display: block; margin: 0 0 8px; }
+  .eyebrow { font-size: .875rem; }
+  .seriesNames { font-size: .875rem; }
+  .heroLead { font-size: 1rem; }
+  .ensemble { border-width: 6px; }
+  .ensemble figcaption { font-size: .75rem; padding: 10px 3px 4px; }
+  .ensemble figcaption span { letter-spacing: .03em; }
+  .stories { padding: 36px 0 48px; }
+  .sectionHeading { text-align: left; margin-bottom: 24px; }
+  .sectionHeading h2 { font-size: 1.5rem; }
+  .storyCards { grid-template-columns: 1fr; gap: 20px; }
+  .storyCard { display: grid; grid-template-columns: minmax(100px, .8fr) minmax(0, 1fr); background: var(--wash); border-bottom-width: 2px; }
+  .cardCaption { align-items: flex-start; flex-direction: column; justify-content: center; padding: 16px; gap: 12px; }
+  .cardNumber { display: block; }
+  .cardCaption strong { font-size: 1rem; }
+  .cardArrow { margin-left: 0; }
+  .story { padding: 40px 0 48px; }
+  .storyHeading { gap: 18px; margin-bottom: 28px; }
+  .storyHeading h2 { font-size: 1.5rem; }
+  .storyHeading h2 > span { font-size: .875rem; }
+  .storyContent { grid-template-columns: 1fr; gap: 32px; }
+  .footer { flex-wrap: wrap; padding-bottom: 110px; }
+  .footer > span { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .storyCard { transition: none; }
+  .storyCard:hover { transform: none; }
+}

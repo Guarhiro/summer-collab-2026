@@ -1378,3 +1378,7 @@ footer a:focus-visible {
 /* Work 14: keep the supplied title artwork fully visible. */
 #work-14 .polaroid-photo img,
 .gallery-card[href$="/koimiman/"] img { object-fit: contain; object-position: center; background: #def6ff; filter: none; transform: none; }
+
+/* Keep all three heroines visible in the shared series artwork. */
+#work-15 .polaroid-photo img,
+.gallery-card[href$="/harenoya/"] img { object-fit: contain; object-position: center; background: #e9f6fa; filter: none; transform: none; }
