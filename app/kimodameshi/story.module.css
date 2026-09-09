@@ -1,0 +1,12 @@
+.page.page {
+  --story-blue: #8ddff1;
+  --story-pink: #f7e872;
+  color: #e9f4f8;
+  background: radial-gradient(ellipse at 10% 15%, #163e51, transparent 58%), linear-gradient(155deg, #0b1c2a, #102e3b 62%, #091923);
+}
+.header.header, .sectionHeading.sectionHeading, .footer.footer { border-color: #a4d6e52e; }
+.cover.cover { border-color: #dcecf1; box-shadow: 0 24px 60px #020e2180; }
+.portrait.portrait { aspect-ratio: auto; background: #0a202c; box-shadow: 0 15px 40px #020e2159; }
+.choices.choices { flex-wrap: wrap; gap: 10px; }
+.choices.choices button { gap: 8px; padding-right: 10px; background: #153c4b; color: #e9f4f8; }
+.choices.choices img { width: 48px; height: 60px; object-fit: contain; background: #0a202c; }
