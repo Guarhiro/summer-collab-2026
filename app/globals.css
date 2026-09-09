@@ -1399,3 +1399,7 @@ footer a:focus-visible {
 /* Keep the supplied cover's title and speech bubbles visible. */
 #work-17 .polaroid-photo img,
 .gallery-card[href$="/kimodameshi/"] img { object-fit: contain; object-position: center; background: #092532; filter: none; transform: none; }
+
+/* Show the complete text-free landscape artwork in both work 18 lists. */
+#work-18 .polaroid-photo img,
+.gallery-card[href$="/ayumu-summer/"] img { object-fit: contain; object-position: center; background: #dbf5ff; filter: none; transform: none; }

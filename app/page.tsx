@@ -287,6 +287,22 @@ const projects = [
     accent: "#65cceb",
     sceneWord: "幽",
   },
+  {
+    id: "work-18",
+    chapter: "18",
+    englishTitle: "",
+    title: "水着のあなたに理性限界！？チャラ男・歩夢と余裕ゼロな夏の海",
+    credit: "製作者：パトラちゃん",
+    description: "2ヶ月前にBARでナンパされてから未だ交際前のジリジリ感……。ハイスペチャラ男の歩夢は、あなたに一目惚れして以来ずっと夢中！猛アタックの末に実現した二人きりの海旅行で、水着姿のあなたを前に彼の理性が限界突破！？普段は完璧な彼が、あなたにだけ余裕をなくして顔を真っ赤にする激甘ギャップストーリー。",
+    image: "/media/ayumu-summer/cover-wide-v1.png",
+    imageAlt: "夏の海で笑う柳川歩夢の文字なし横長サムネイル",
+    href: "/ayumu-summer/",
+    external: false,
+    side: "right",
+    rotate: "2deg",
+    accent: "#ffcf45",
+    sceneWord: "照",
+  },
 ] as const;
 
 const clamp = (value: number, min = 0, max = 1) =>

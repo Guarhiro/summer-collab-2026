@@ -1,0 +1,15 @@
+.page.page {
+  --story-blue: #087daf;
+  --story-pink: #c91670;
+  background: linear-gradient(145deg, #dff6ff, #fff 48%, #fff3dd);
+}
+
+.intro h1 {
+  font-size: clamp(1.9rem, 3.1vw, 2.8rem);
+  overflow-wrap: anywhere;
+}
+
+.credit { font-size: 16px; }
+.choices.choices { flex-wrap: wrap; gap: 10px; }
+.choices button { gap: 8px; padding-right: 10px; }
+.choices img { object-position: 50% 18%; }
