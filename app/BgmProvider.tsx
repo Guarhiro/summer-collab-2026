@@ -30,7 +30,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const tracks = {
   "end-of-summer-warmth": { title: "End-of-Summer Warmth", src: `${basePath}/media/summer-festival/end-of-summer-warmth.mp3` },
   "yoyu-zero-summer-breeze": { title: "余裕ゼロのサマーブリーズ", src: `${basePath}/media/ayumu-summer/yoyu-zero-summer-breeze.mp3` },
-  "ghost-midnight-swing": { title: "びびり幽霊のミッドナイト・スウィング", src: `${basePath}/media/kimodameshi/midnight-swing.mp3` },
+  "ghost-midnight-swing": { title: "一夜限りの肝試し", src: `${basePath}/media/kimodameshi/one-night-kimodameshi.mp3` },
   "kimi-to-isshukan": { title: "きみと一週間、まだ秘密。", src: `${basePath}/media/hakata-riri/kimi-to-isshukan.mp3` },
   "harenoya-koi-no-gogo": { title: "はれの屋、恋の午後", src: `${basePath}/media/harenoya/harenoya-koi-no-gogo.mp3` },
   "shiokaze-to-ato-ippo": { title: "潮風と、あと一歩", src: `${basePath}/media/koimiman/shiokaze-to-ato-ippo.mp3` },
