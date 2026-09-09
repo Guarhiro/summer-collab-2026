@@ -13,7 +13,7 @@ import {
 import { usePathname } from "next/navigation";
 import { Music2, Pause, Play } from "lucide-react";
 
-export type BgmTrack = "end-of-summer-warmth" | "yoyu-zero-summer-breeze" | "ghost-midnight-swing" | "kimi-to-isshukan" | "harenoya-koi-no-gogo" | "shiokaze-to-ato-ippo" | "oni-training-candy-forecast" | "egao-sunlit-rivalry" | "summer-house-bell" | "poolside-afternoon" | "cicada-summer" | "neon-pool-reflections" | "moonlit-seaside-walk" | "turquoise-terrace" | "sunlit-rivalry" | "festival-heartbeat" | "eternal-blue" | "breezy-seaside-romance" | "sunny-beach-afternoon";
+export type BgmTrack = "ocean-police" | "end-of-summer-warmth" | "yoyu-zero-summer-breeze" | "ghost-midnight-swing" | "kimi-to-isshukan" | "harenoya-koi-no-gogo" | "shiokaze-to-ato-ippo" | "oni-training-candy-forecast" | "egao-sunlit-rivalry" | "summer-house-bell" | "poolside-afternoon" | "cicada-summer" | "neon-pool-reflections" | "moonlit-seaside-walk" | "turquoise-terrace" | "sunlit-rivalry" | "festival-heartbeat" | "eternal-blue" | "breezy-seaside-romance" | "sunny-beach-afternoon";
 
 type BgmStatus = "idle" | "playing" | "paused" | "blocked";
 
@@ -28,6 +28,7 @@ const TARGET_VOLUME = 0.3;
 const FADE_DURATION_MS = 900;
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const tracks = {
+  "ocean-police": { title: "えちえち警察官とかほざいてる奴が実は海の神だったなんだこれェ", src: `${basePath}/media/namiuchigiwa-genkouhan/ocean-police.mp3` },
   "end-of-summer-warmth": { title: "End-of-Summer Warmth", src: `${basePath}/media/summer-festival/end-of-summer-warmth.mp3` },
   "yoyu-zero-summer-breeze": { title: "余裕ゼロのサマーブリーズ", src: `${basePath}/media/ayumu-summer/yoyu-zero-summer-breeze.mp3` },
   "ghost-midnight-swing": { title: "一夜限りの肝試し", src: `${basePath}/media/kimodameshi/one-night-kimodameshi.mp3` },
@@ -67,6 +68,7 @@ export default function BgmProvider({ children }: { children: ReactNode }) {
     ? "breezy-seaside-romance"
     : pathname?.includes("/saioshi-natsumatsuri") ? "festival-heartbeat"
     : pathname?.includes("/beach-beni") ? "sunny-beach-afternoon"
+    : pathname?.includes("/namiuchigiwa-genkouhan") ? "ocean-police"
     : pathname?.includes("/summer-festival") ? "end-of-summer-warmth"
     : pathname?.includes("/ayumu-summer") ? "yoyu-zero-summer-breeze"
     : pathname?.includes("/kimodameshi") ? "ghost-midnight-swing"

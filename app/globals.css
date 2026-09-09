@@ -1395,3 +1395,7 @@ footer a:focus-visible {
 /* Show Subaru above all five artists in the complete landscape listing artwork. */
 #work-19 .polaroid-photo img,
 .gallery-card[href$="/summer-festival/"] img { object-fit: contain; object-position: center; background: #d6f4ff; filter: none; transform: none; }
+
+/* Preserve the full supplied title artwork in both work 20 lists. */
+#work-20 .polaroid-photo img,
+.gallery-card[href$="/namiuchigiwa-genkouhan/"] img { object-fit: contain; object-position: center; background: #ddf6ff; filter: none; transform: none; }
