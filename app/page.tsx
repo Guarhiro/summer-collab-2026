@@ -255,6 +255,22 @@ const projects = [
     accent: "#f3b6c9",
     sceneWord: "晴",
   },
+  {
+    id: "work-16",
+    chapter: "16",
+    englishTitle: "",
+    title: "博多弁の女を離すな！",
+    credit: "製作者：ガンズベリー",
+    description: "「せっかくの夏休みやし、一週間ずーっと一緒におれるんよ？　そりゃ楽しみにするに決まっとるやん♪」",
+    image: "/media/hakata-riri/cover.png",
+    imageAlt: "博多弁の女を離すな！ 秋月 莉里のサムネイル",
+    href: "/hakata-riri/",
+    external: false,
+    side: "right",
+    rotate: "2deg",
+    accent: "#79d4f4",
+    sceneWord: "秘",
+  },
 ] as const;
 
 const clamp = (value: number, min = 0, max = 1) =>
@@ -526,9 +542,9 @@ export default function Home() {
             <article
               className="polaroid"
               data-project-card
-              data-bgm-track={project.external ? undefined : (project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : project.id === "work-09" ? "summer-house-bell" : project.id === "work-10" ? "cicada-summer" : project.id === "work-15" ? "harenoya-koi-no-gogo" : project.id === "work-14" ? "shiokaze-to-ato-ippo" : project.id === "work-13" ? "oni-training-candy-forecast" : project.id === "work-12" ? "egao-sunlit-rivalry" : project.id === "work-11" ? "poolside-afternoon" : "eternal-blue")}
+              data-bgm-track={project.external ? undefined : (project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : project.id === "work-09" ? "summer-house-bell" : project.id === "work-10" ? "cicada-summer" : project.id === "work-16" ? "kimi-to-isshukan" : project.id === "work-15" ? "harenoya-koi-no-gogo" : project.id === "work-14" ? "shiokaze-to-ato-ippo" : project.id === "work-13" ? "oni-training-candy-forecast" : project.id === "work-12" ? "egao-sunlit-rivalry" : project.id === "work-11" ? "poolside-afternoon" : "eternal-blue")}
               data-bgm-trigger={project.external ? undefined : "project-card"}
-              onPointerDown={project.external ? undefined : () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : project.id === "work-09" ? "summer-house-bell" : project.id === "work-10" ? "cicada-summer" : project.id === "work-15" ? "harenoya-koi-no-gogo" : project.id === "work-14" ? "shiokaze-to-ato-ippo" : project.id === "work-13" ? "oni-training-candy-forecast" : project.id === "work-12" ? "egao-sunlit-rivalry" : project.id === "work-11" ? "poolside-afternoon" : "eternal-blue")}
+              onPointerDown={project.external ? undefined : () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : project.id === "work-09" ? "summer-house-bell" : project.id === "work-10" ? "cicada-summer" : project.id === "work-16" ? "kimi-to-isshukan" : project.id === "work-15" ? "harenoya-koi-no-gogo" : project.id === "work-14" ? "shiokaze-to-ato-ippo" : project.id === "work-13" ? "oni-training-candy-forecast" : project.id === "work-12" ? "egao-sunlit-rivalry" : project.id === "work-11" ? "poolside-afternoon" : "eternal-blue")}
               style={{ "--card-rotate": project.rotate } as CSSVariableStyle}
             >
               <span className="tape tape-top" aria-hidden="true" />
@@ -578,7 +594,7 @@ export default function Home() {
                     <Link
                       className="project-link"
                       href={project.href}
-                      onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : project.id === "work-09" ? "summer-house-bell" : project.id === "work-10" ? "cicada-summer" : project.id === "work-15" ? "harenoya-koi-no-gogo" : project.id === "work-14" ? "shiokaze-to-ato-ippo" : project.id === "work-13" ? "oni-training-candy-forecast" : project.id === "work-12" ? "egao-sunlit-rivalry" : project.id === "work-11" ? "poolside-afternoon" : "eternal-blue") : undefined}
+                      onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : project.id === "work-09" ? "summer-house-bell" : project.id === "work-10" ? "cicada-summer" : project.id === "work-16" ? "kimi-to-isshukan" : project.id === "work-15" ? "harenoya-koi-no-gogo" : project.id === "work-14" ? "shiokaze-to-ato-ippo" : project.id === "work-13" ? "oni-training-candy-forecast" : project.id === "work-12" ? "egao-sunlit-rivalry" : project.id === "work-11" ? "poolside-afternoon" : "eternal-blue") : undefined}
                     >
                       <span>{project.id === "work-05" ? "12人のキャラクターを見る" : project.id === "work-15" ? "三つの作品紹介を見る" : "作品紹介を見る"}</span>
                     </Link>
@@ -646,8 +662,8 @@ export default function Home() {
                     tabIndex={duplicate ? -1 : 0}
                     aria-hidden={duplicate || undefined}
                     data-bgm-trigger={!project.external ? "gallery-card" : undefined}
-                    onPointerDown={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : project.id === "work-09" ? "summer-house-bell" : project.id === "work-10" ? "cicada-summer" : project.id === "work-15" ? "harenoya-koi-no-gogo" : project.id === "work-14" ? "shiokaze-to-ato-ippo" : project.id === "work-13" ? "oni-training-candy-forecast" : project.id === "work-12" ? "egao-sunlit-rivalry" : project.id === "work-11" ? "poolside-afternoon" : "eternal-blue") : undefined}
-                    onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : project.id === "work-09" ? "summer-house-bell" : project.id === "work-10" ? "cicada-summer" : project.id === "work-15" ? "harenoya-koi-no-gogo" : project.id === "work-14" ? "shiokaze-to-ato-ippo" : project.id === "work-13" ? "oni-training-candy-forecast" : project.id === "work-12" ? "egao-sunlit-rivalry" : project.id === "work-11" ? "poolside-afternoon" : "eternal-blue") : undefined}
+                    onPointerDown={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : project.id === "work-09" ? "summer-house-bell" : project.id === "work-10" ? "cicada-summer" : project.id === "work-16" ? "kimi-to-isshukan" : project.id === "work-15" ? "harenoya-koi-no-gogo" : project.id === "work-14" ? "shiokaze-to-ato-ippo" : project.id === "work-13" ? "oni-training-candy-forecast" : project.id === "work-12" ? "egao-sunlit-rivalry" : project.id === "work-11" ? "poolside-afternoon" : "eternal-blue") : undefined}
+                    onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : project.id === "work-09" ? "summer-house-bell" : project.id === "work-10" ? "cicada-summer" : project.id === "work-16" ? "kimi-to-isshukan" : project.id === "work-15" ? "harenoya-koi-no-gogo" : project.id === "work-14" ? "shiokaze-to-ato-ippo" : project.id === "work-13" ? "oni-training-candy-forecast" : project.id === "work-12" ? "egao-sunlit-rivalry" : project.id === "work-11" ? "poolside-afternoon" : "eternal-blue") : undefined}
                   >
                     {cardContent}
                   </Link>

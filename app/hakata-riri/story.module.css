@@ -1,0 +1,14 @@
+.page.page {
+  --story-blue: #086c9b;
+  --story-pink: #345eac;
+  background: linear-gradient(145deg, #e3f7ff, #fff 48%, #edf5ff);
+}
+
+.hero.hero { align-items: start; }
+.cover { position: sticky; top: 32px; }
+.credit { color: var(--story-blue); font-size: 16px; }
+.portrait.portrait { aspect-ratio: 2 / 3; }
+
+@media (max-width: 700px) {
+  .cover { position: static; }
+}

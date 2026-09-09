@@ -1391,3 +1391,7 @@ footer a:focus-visible {
 /* Keep all three heroines visible in the shared series artwork. */
 #work-15 .polaroid-photo img,
 .gallery-card[href$="/harenoya/"] img { object-fit: contain; object-position: center; background: #e9f6fa; filter: none; transform: none; }
+
+/* Frame Riri's face in the lists; keep the full artwork on her story page. */
+#work-16 .polaroid-photo img,
+.gallery-card[href$="/hakata-riri/"] img { object-fit: cover; object-position: 50% 22%; filter: none; }
