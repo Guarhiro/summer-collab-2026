@@ -22,6 +22,7 @@ export default function StoryPage() {
         <div className={styles.intro}>
           <p className={styles.label}>作品紹介</p>
           <h1 id="story-title">{title}</h1>
+          <p className={styles.synopsis}>製作者：夜の申し子</p>
           <p className={styles.synopsis}>{introduction}</p>
           <a className={styles.jump} href="#characters">登場人物を見る <span aria-hidden="true">↓</span></a>
         </div>
