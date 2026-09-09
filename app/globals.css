@@ -273,14 +273,23 @@ video {
 }
 
 .chapter-rail {
+  --rail-max-height: calc(100svh - 240px);
   position: fixed;
   z-index: 25;
-  top: 50%;
+  top: calc(50% - 24px);
   right: 25px;
   display: grid;
-  gap: 14px;
-  width: 28px;
-  padding: 14px 0;
+  grid-template-columns: repeat(2, 28px);
+  grid-auto-flow: row;
+  column-gap: 10px;
+  /* Fit 30 links in 15 rows above the playback controls. */
+  row-gap: clamp(2px, calc((var(--rail-max-height) - 436px) / 14), 12px);
+  width: 86px;
+  max-height: var(--rail-max-height);
+  padding: 8px 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
   transform: translateY(-50%);
 }
 
