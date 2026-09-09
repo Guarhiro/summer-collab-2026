@@ -44,6 +44,7 @@ export default function StoryPage() {
         <div className={styles.intro}>
           <p className={styles.label}>作品紹介</p>
           <h1 id="story-title">{title}</h1>
+          <p className={styles.synopsis}>製作者：ぽみゃ</p>
           {story.map((paragraph) => (
             <p className={styles.synopsis} key={paragraph}>{paragraph}</p>
           ))}
