@@ -262,7 +262,7 @@ const projects = [
     title: "博多弁の女を離すな！",
     credit: "製作者：ガンズベリー",
     description: "「せっかくの夏休みやし、一週間ずーっと一緒におれるんよ？　そりゃ楽しみにするに決まっとるやん♪」",
-    image: "/media/hakata-riri/cover.png",
+    image: "/media/hakata-riri/cover-no-text-v1.png",
     imageAlt: "博多弁の女を離すな！ 秋月 莉里のサムネイル",
     href: "/hakata-riri/",
     external: false,
