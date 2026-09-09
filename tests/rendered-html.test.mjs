@@ -110,6 +110,23 @@ test("ships the scroll-ready media and GitHub Pages workflow", async () => {
   await access(root);
 });
 
+test("exports a muted playlist player and ships all twelve completed clips", async () => {
+  const html = await readFile(output, "utf8");
+  const video = html.match(/<video\b[^>]*class="background-video"[^>]*>/)?.[0];
+  assert.ok(video);
+  assert.match(video, /\bmuted(?:[\s=>])/i);
+  assert.match(video, /\bplaysinline(?:[\s=>])/i);
+  assert.doesNotMatch(video, /\b(?:loop|autoplay|src)=/i);
+  const manifest = JSON.parse(await readFile(new URL("../production/background-playlist/manifest.json", import.meta.url), "utf8"));
+  assert.equal(manifest.clips.length, 12);
+  assert.equal(new Set(manifest.clips.map((clip) => clip.source)).size, 12);
+  for (const clip of manifest.clips) {
+    const built = await stat(new URL(`../dist/client${clip.asset}`, import.meta.url));
+    assert.equal(built.size, clip.bytes);
+    assert.equal(clip.audio, false);
+  }
+});
+
 test("exports the persistent Eternal Blue BGM UI and audio", async () => {
   const [
     mainHtml,

@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useBgm, type BgmTrack } from "./BgmProvider";
 import { scrollToSection } from "./scrollToSection";
+import { backgroundClips, createBackgroundPlayback } from "./backgroundPlaylist";
 
 type CSSVariableStyle = CSSProperties &
   Record<`--${string}`, string | number>;
@@ -332,6 +333,7 @@ const smoothstep = (edge0: number, edge1: number, value: number) => {
 export default function Home() {
   const shellRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const playbackRef = useRef<ReturnType<typeof createBackgroundPlayback> | null>(null);
   const { playBgm, followBgm } = useBgm();
   const [isPaused, setIsPaused] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -383,21 +385,22 @@ export default function Home() {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-
-    video.playbackRate = 0.72;
-
-    const syncPlayback = () => {
-      if (document.hidden || isPaused || prefersReducedMotion) {
-        video.pause();
-        return;
-      }
-
-      void video.play().catch(() => setIsPaused(true));
+    const playback = createBackgroundPlayback(
+      video,
+      backgroundClips.map(asset),
+      () => setIsPaused(true),
+    );
+    playbackRef.current = playback;
+    return () => {
+      playback.dispose();
+      playbackRef.current = null;
     };
+  }, []);
 
-    syncPlayback();
-    document.addEventListener("visibilitychange", syncPlayback);
-    return () => document.removeEventListener("visibilitychange", syncPlayback);
+  useEffect(() => {
+    playbackRef.current?.setPaused(
+      isPaused || prefersReducedMotion || window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    );
   }, [isPaused, prefersReducedMotion]);
 
   useEffect(() => {
@@ -469,13 +472,15 @@ export default function Home() {
     };
 
     const updateVideoLoopFade = () => {
-      if (Number.isFinite(video.duration) && video.duration > 0) {
+      if (video.readyState >= 2 && Number.isFinite(video.duration) && video.duration > 0) {
         const edgeDistance = Math.min(
           video.currentTime,
           Math.max(0, video.duration - video.currentTime),
         );
         const loopOpacity = smoothstep(0.08, 0.72, edgeDistance);
         shell.style.setProperty("--video-loop-opacity", loopOpacity.toFixed(3));
+      } else {
+        shell.style.setProperty("--video-loop-opacity", "0");
       }
       videoFrame = window.requestAnimationFrame(updateVideoLoopFade);
     };
@@ -501,22 +506,12 @@ export default function Home() {
   return (
     <div className="site-shell" ref={shellRef}>
       <div className="background-stage" aria-hidden="true">
-        <div
-          className="background-poster"
-          style={{
-            backgroundImage: `url(${asset("/media/summer-collab-poster.jpg")})`,
-          }}
-        />
         <video
           ref={videoRef}
           className="background-video"
-          src={asset("/media/summer-collab-background.mp4")}
-          poster={asset("/media/summer-collab-poster.jpg")}
-          autoPlay
-          loop
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
           tabIndex={-1}
         />
         <div className="background-ink" />
