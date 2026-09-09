@@ -1403,3 +1403,7 @@ footer a:focus-visible {
 /* Show the complete text-free landscape artwork in both work 18 lists. */
 #work-18 .polaroid-photo img,
 .gallery-card[href$="/ayumu-summer/"] img { object-fit: contain; object-position: center; background: #dbf5ff; filter: none; transform: none; }
+
+/* Show Subaru above all five artists in the complete landscape listing artwork. */
+#work-19 .polaroid-photo img,
+.gallery-card[href$="/summer-festival/"] img { object-fit: contain; object-position: center; background: #d6f4ff; filter: none; transform: none; }
