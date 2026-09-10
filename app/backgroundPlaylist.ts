@@ -1,6 +1,6 @@
 export const backgroundClips = Array.from(
   { length: 13 },
-  (_, index) => `/media/background-clips/clip-${String(index + 1).padStart(2, "0")}.mp4`,
+  (_, index) => `/media/background-clips/clip-${String(index + 1).padStart(2, "0")}.mp4${index === 9 ? "?v=1789011226634" : ""}`,
 );
 
 // Each round uses every clip once, including across the last/first boundary.

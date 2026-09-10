@@ -1,6 +1,6 @@
 {
   "description": "User-approved thirteen completed videos, web playback derivatives. Sources are unchanged.",
-  "encoding": "H.264 / yuv420p / 1920x1080 / CRF 22 / faststart / no audio; original frame counts and frame rates retained",
+  "encoding": "H.264 / yuv420p / maximum 1920x1080, original aspect ratio / CRF 22 / faststart / no audio; original frame counts and frame rates retained",
   "playback_rate": 0.72,
   "clips": [
     {
@@ -140,18 +140,19 @@
     },
     {
       "id": "clip-10",
-      "source": "/Users/guarhiro/Downloads/image-to-video-1788962651510.mp4",
-      "source_sha256": "45da0f5e01b8170ed20cc1db7dc029aa7090219fdff7a4f46caf78044480dbd4",
-      "source_bytes": 12599571,
+      "source": "/Users/guarhiro/Downloads/image-to-video-1789011226634.mp4",
+      "source_sha256": "3811bbc2716a66783ff6d1dbdaa65ff27a3a9b671e4780a9f4bd4d271d653faf",
+      "source_bytes": 6857908,
       "asset": "/media/background-clips/clip-10.mp4",
-      "bytes": 7909092,
-      "sha256": "943a319b58367edc291512b90ab8f82a650c6670a903200cb2de4f26814b256b",
-      "duration_seconds": 15.083333,
-      "frames": 362,
+      "bytes": 4180064,
+      "sha256": "b73c9b8981f2539467543ddefd174be94d045ed6c89711412b623911e5c55bb1",
+      "duration_seconds": 8.0,
+      "frames": 192,
       "fps": "24/1",
-      "width": 1920,
+      "width": 1632,
       "height": 1080,
-      "audio": false
+      "audio": false,
+      "playback_url": "/media/background-clips/clip-10.mp4?v=1789011226634"
     },
     {
       "id": "clip-11",
