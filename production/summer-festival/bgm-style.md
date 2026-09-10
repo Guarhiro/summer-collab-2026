@@ -2,11 +2,13 @@
 
 製作者：ジンJIN2MR
 
-採用案：A案「サマー・ギターポップ × インディーダンス」（124 BPM・歌なし）。確定した生成用スタイル文は `bgm-style-a.txt` に保存。B案・C案は比較案として残す。
+初回制作時の採用案：A案「サマー・ギターポップ × インディーダンス」（124 BPM・歌なし）。確定した生成用スタイル文は `bgm-style-a.txt` に保存。B案・C案は比較案として残す。
 
 遊園地を使った夏フェスの高揚感、昴の無邪気な笑顔と自然な気遣い、そして「これってデート？」と意識してしまう距離感を音にする。下記は音源制作時のスタイル案。
 
-設定音源：ユーザー提供の「End-of-Summer Warmth」（約1分22秒）。`/Users/guarhiro/Downloads/End-of-Summer Warmth.m4a` から、サイト用の `public/media/summer-festival/end-of-summer-warmth.mp3` を作成。作品19の一覧カード・下部ギャラリー・紹介ページに設定。既存の操作による再生・停止とループ再生を使用。
+現在の設定音源：ユーザー提供の「Midnight station lights」（約3分7秒）。`/Users/guarhiro/Downloads/Midnight station lights.mp3` を変換せず `public/media/summer-festival/midnight-station-lights.mp3` にコピーし、作品19の一覧カード・下部ギャラリー・紹介ページに設定。既存の操作による再生・停止とループ再生を使用。
+
+差し替え履歴：2026-09-10、「End-of-Summer Warmth」から「Midnight station lights」へ変更。旧音源 `public/media/summer-festival/end-of-summer-warmth.mp3` と初回の生成用スタイル文は制作記録として保持。
 
 ## A案：サマー・ギターポップ × インディーダンス（採用）
 
