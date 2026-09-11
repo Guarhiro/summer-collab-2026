@@ -378,6 +378,7 @@ const projectBgmTrack = (projectId: string): BgmTrack | undefined => {
     case "work-18": return "yoyu-zero-summer-breeze";
     case "work-19": return "midnight-station-lights";
     case "work-20": return "ocean-police";
+    case "work-21": return "shimekiri-mae-akuma-wa-hohoemu";
     default: return undefined;
   }
 };
