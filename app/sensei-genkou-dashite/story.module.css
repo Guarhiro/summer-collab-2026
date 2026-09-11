@@ -1,0 +1,25 @@
+.page.page {
+  --story-blue: #5d800f;
+  --story-pink: #cf4f71;
+  background:
+    radial-gradient(circle at 12% 14%, #f3ffc1 0 8%, transparent 27%),
+    linear-gradient(145deg, #efffd2, #fff 46%, #f6fff0);
+}
+
+.cover.cover { transform: rotate(1.5deg); }
+
+.intro h1 {
+  font-size: clamp(2rem, 3.8vw, 3.35rem);
+  overflow-wrap: anywhere;
+}
+
+.credit { font-size: 16px; }
+
+.portraits.portraits { max-width: 450px; }
+
+.portrait.portrait {
+  aspect-ratio: 3 / 5;
+  object-fit: cover;
+  object-position: 50% 44%;
+  background: #f5ffd8;
+}

@@ -9,6 +9,7 @@ import { useBgm, type BgmTrack } from "./BgmProvider";
 import { scrollToSection } from "./scrollToSection";
 import { backgroundClips, createBackgroundPlayback } from "./backgroundPlaylist";
 import { creator as nagiseCreator, story as nagiseStory, title as nagiseTitle } from "./namiuchigiwa-genkouhan/content";
+import { cardDescription as belphegorCardDescription, creator as belphegorCreator, title as belphegorTitle } from "./sensei-genkou-dashite/content";
 
 type CSSVariableStyle = CSSProperties &
   Record<`--${string}`, string | number>;
@@ -337,7 +338,49 @@ const projects = [
     accent: "#56c7ef",
     sceneWord: "潮",
   },
+  {
+    id: "work-21",
+    chapter: "21",
+    englishTitle: "",
+    title: belphegorTitle,
+    credit: `製作者：${belphegorCreator}`,
+    description: belphegorCardDescription,
+    image: "/media/sensei-genkou-dashite/cover-wide-v1.png",
+    imageAlt: "こちらへ微笑むベルフェゴールの文字なし横長サムネイル",
+    href: "/sensei-genkou-dashite/",
+    external: false,
+    side: "left",
+    rotate: "-2deg",
+    accent: "#c4ee4f",
+    sceneWord: "怠",
+  },
 ] as const;
+
+const projectBgmTrack = (projectId: string): BgmTrack | undefined => {
+  switch (projectId) {
+    case "work-01": return "breezy-seaside-romance";
+    case "work-02": return "sunny-beach-afternoon";
+    case "work-03": return "festival-heartbeat";
+    case "work-04": return "sunlit-rivalry";
+    case "work-05": return "eternal-blue";
+    case "work-06": return "turquoise-terrace";
+    case "work-07": return "moonlit-seaside-walk";
+    case "work-08": return "neon-pool-reflections";
+    case "work-09": return "summer-house-bell";
+    case "work-10": return "cicada-summer";
+    case "work-11": return "poolside-afternoon";
+    case "work-12": return "egao-sunlit-rivalry";
+    case "work-13": return "oni-training-candy-forecast";
+    case "work-14": return "shiokaze-to-ato-ippo";
+    case "work-15": return "harenoya-koi-no-gogo";
+    case "work-16": return "kimi-to-isshukan";
+    case "work-17": return "ghost-midnight-swing";
+    case "work-18": return "yoyu-zero-summer-breeze";
+    case "work-19": return "midnight-station-lights";
+    case "work-20": return "ocean-police";
+    default: return undefined;
+  }
+};
 
 const clamp = (value: number, min = 0, max = 1) =>
   Math.min(max, Math.max(min, value));
@@ -584,7 +627,10 @@ export default function Home() {
           </a>
         </section>
 
-        {projects.map((project) => (
+        {projects.map((project) => {
+          const bgmTrack = project.external ? undefined : projectBgmTrack(project.id);
+
+          return (
           <section
             className={`project-scene project-scene-${project.side}`}
             id={project.id}
@@ -602,9 +648,9 @@ export default function Home() {
             <article
               className="polaroid"
               data-project-card
-              data-bgm-track={project.external ? undefined : (project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : project.id === "work-09" ? "summer-house-bell" : project.id === "work-10" ? "cicada-summer" : project.id === "work-20" ? "ocean-police" : project.id === "work-19" ? "midnight-station-lights" : project.id === "work-18" ? "yoyu-zero-summer-breeze" : project.id === "work-17" ? "ghost-midnight-swing" : project.id === "work-16" ? "kimi-to-isshukan" : project.id === "work-15" ? "harenoya-koi-no-gogo" : project.id === "work-14" ? "shiokaze-to-ato-ippo" : project.id === "work-13" ? "oni-training-candy-forecast" : project.id === "work-12" ? "egao-sunlit-rivalry" : project.id === "work-11" ? "poolside-afternoon" : "eternal-blue")}
-              data-bgm-trigger={project.external ? undefined : "project-card"}
-              onPointerDown={project.external ? undefined : () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : project.id === "work-09" ? "summer-house-bell" : project.id === "work-10" ? "cicada-summer" : project.id === "work-20" ? "ocean-police" : project.id === "work-19" ? "midnight-station-lights" : project.id === "work-18" ? "yoyu-zero-summer-breeze" : project.id === "work-17" ? "ghost-midnight-swing" : project.id === "work-16" ? "kimi-to-isshukan" : project.id === "work-15" ? "harenoya-koi-no-gogo" : project.id === "work-14" ? "shiokaze-to-ato-ippo" : project.id === "work-13" ? "oni-training-candy-forecast" : project.id === "work-12" ? "egao-sunlit-rivalry" : project.id === "work-11" ? "poolside-afternoon" : "eternal-blue")}
+              data-bgm-track={bgmTrack}
+              data-bgm-trigger={bgmTrack ? "project-card" : undefined}
+              onPointerDown={bgmTrack ? () => void playBgm(bgmTrack) : undefined}
               style={{ "--card-rotate": project.rotate } as CSSVariableStyle}
             >
               <span className="tape tape-top" aria-hidden="true" />
@@ -650,11 +696,11 @@ export default function Home() {
                   </a>
                 ) : (
                   <>
-                    {!project.external ? <p className="project-bgm-hint">BGM / SCROLL TO SWITCH · TAP TO PLAY</p> : null}
+                    {bgmTrack ? <p className="project-bgm-hint">BGM / SCROLL TO SWITCH · TAP TO PLAY</p> : null}
                     <Link
                       className="project-link"
                       href={project.href}
-                      onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : project.id === "work-09" ? "summer-house-bell" : project.id === "work-10" ? "cicada-summer" : project.id === "work-20" ? "ocean-police" : project.id === "work-19" ? "midnight-station-lights" : project.id === "work-18" ? "yoyu-zero-summer-breeze" : project.id === "work-17" ? "ghost-midnight-swing" : project.id === "work-16" ? "kimi-to-isshukan" : project.id === "work-15" ? "harenoya-koi-no-gogo" : project.id === "work-14" ? "shiokaze-to-ato-ippo" : project.id === "work-13" ? "oni-training-candy-forecast" : project.id === "work-12" ? "egao-sunlit-rivalry" : project.id === "work-11" ? "poolside-afternoon" : "eternal-blue") : undefined}
+                      onClick={bgmTrack ? () => void playBgm(bgmTrack) : undefined}
                     >
                       <span>{project.id === "work-05" ? "12人のキャラクターを見る" : project.id === "work-15" ? "三つの作品紹介を見る" : "作品紹介を見る"}</span>
                     </Link>
@@ -671,7 +717,8 @@ export default function Home() {
               </span>
             </p>
           </section>
-        ))}
+          );
+        })}
 
         <section className="collection" id="collection">
           <div className="collection-heading">
@@ -686,6 +733,7 @@ export default function Home() {
             <div className="gallery-track">
               {[...projects, ...projects].map((project, index) => {
                 const duplicate = index >= projects.length;
+                const bgmTrack = project.external ? undefined : projectBgmTrack(project.id);
                 const cardContent = (
                   <>
                     <img src={asset(project.image)} alt="" loading="lazy" />
@@ -720,9 +768,9 @@ export default function Home() {
                     key={`${project.id}-${index}`}
                     tabIndex={duplicate ? -1 : 0}
                     aria-hidden={duplicate || undefined}
-                    data-bgm-trigger={!project.external ? "gallery-card" : undefined}
-                    onPointerDown={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : project.id === "work-09" ? "summer-house-bell" : project.id === "work-10" ? "cicada-summer" : project.id === "work-20" ? "ocean-police" : project.id === "work-19" ? "midnight-station-lights" : project.id === "work-18" ? "yoyu-zero-summer-breeze" : project.id === "work-17" ? "ghost-midnight-swing" : project.id === "work-16" ? "kimi-to-isshukan" : project.id === "work-15" ? "harenoya-koi-no-gogo" : project.id === "work-14" ? "shiokaze-to-ato-ippo" : project.id === "work-13" ? "oni-training-candy-forecast" : project.id === "work-12" ? "egao-sunlit-rivalry" : project.id === "work-11" ? "poolside-afternoon" : "eternal-blue") : undefined}
-                    onClick={!project.external ? () => void playBgm(project.id === "work-01" ? "breezy-seaside-romance" : project.id === "work-02" ? "sunny-beach-afternoon" : project.id === "work-03" ? "festival-heartbeat" : project.id === "work-04" ? "sunlit-rivalry" : project.id === "work-06" ? "turquoise-terrace" : project.id === "work-07" ? "moonlit-seaside-walk" : project.id === "work-08" ? "neon-pool-reflections" : project.id === "work-09" ? "summer-house-bell" : project.id === "work-10" ? "cicada-summer" : project.id === "work-20" ? "ocean-police" : project.id === "work-19" ? "midnight-station-lights" : project.id === "work-18" ? "yoyu-zero-summer-breeze" : project.id === "work-17" ? "ghost-midnight-swing" : project.id === "work-16" ? "kimi-to-isshukan" : project.id === "work-15" ? "harenoya-koi-no-gogo" : project.id === "work-14" ? "shiokaze-to-ato-ippo" : project.id === "work-13" ? "oni-training-candy-forecast" : project.id === "work-12" ? "egao-sunlit-rivalry" : project.id === "work-11" ? "poolside-afternoon" : "eternal-blue") : undefined}
+                    data-bgm-trigger={bgmTrack ? "gallery-card" : undefined}
+                    onPointerDown={bgmTrack ? () => void playBgm(bgmTrack) : undefined}
+                    onClick={bgmTrack ? () => void playBgm(bgmTrack) : undefined}
                   >
                     {cardContent}
                   </Link>

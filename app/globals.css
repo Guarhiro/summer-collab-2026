@@ -1399,3 +1399,7 @@ footer a:focus-visible {
 /* Preserve the full supplied title artwork in both work 20 lists. */
 #work-20 .polaroid-photo img,
 .gallery-card[href$="/namiuchigiwa-genkouhan/"] img { object-fit: contain; object-position: center; background: #ddf6ff; filter: none; transform: none; }
+
+/* Use the text-free face close-up in both work 21 listings. */
+#work-21 .polaroid-photo img,
+.gallery-card[href$="/sensei-genkou-dashite/"] img { object-fit: cover; object-position: 58% 50%; background: #efffc4; filter: none; transform: none; }
