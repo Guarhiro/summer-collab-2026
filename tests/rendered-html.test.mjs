@@ -110,7 +110,7 @@ test("ships the scroll-ready media and GitHub Pages workflow", async () => {
   await access(root);
 });
 
-test("exports a muted playlist player and ships all thirteen completed clips", async () => {
+test("exports a muted playlist player and ships all fourteen completed clips", async () => {
   const html = await readFile(output, "utf8");
   const video = html.match(/<video\b[^>]*class="background-video"[^>]*>/)?.[0];
   assert.ok(video);
@@ -118,8 +118,8 @@ test("exports a muted playlist player and ships all thirteen completed clips", a
   assert.match(video, /\bplaysinline(?:[\s=>])/i);
   assert.doesNotMatch(video, /\b(?:loop|autoplay|src)=/i);
   const manifest = JSON.parse(await readFile(new URL("../production/background-playlist/manifest.json", import.meta.url), "utf8"));
-  assert.equal(manifest.clips.length, 13);
-  assert.equal(new Set(manifest.clips.map((clip) => clip.source)).size, 13);
+  assert.equal(manifest.clips.length, 14);
+  assert.equal(new Set(manifest.clips.map((clip) => clip.source)).size, 14);
   for (const clip of manifest.clips) {
     const built = await stat(new URL(`../dist/client${clip.asset}`, import.meta.url));
     assert.equal(built.size, clip.bytes);
