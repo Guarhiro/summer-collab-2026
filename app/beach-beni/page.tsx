@@ -28,6 +28,16 @@ export default function StoryPage() {
           <p className={styles.label}>作品紹介</p>
           <h1 id="story-title">ビーチでも<span>紅に</span>飾って！</h1>
           <p className={theme.credit}>製作者：くいっく</p>
+          <p className={theme.externalLink}>
+            <a
+              href="https://s.kyarapu.com/s/6aa417b10219119f45f8fd82"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="キャラぷで「ビーチでも紅に飾って！」を開く（新しいタブ）"
+            >
+              キャラぷで作品を開く <span aria-hidden="true">↗</span>
+            </a>
+          </p>
           <p className={styles.synopsis}>ブラウンの長髪を一つに束ね、黄色い瞳、馬の耳と尾を持つ男＿＿馬島 昴は束の間の休息を求めてビーチへとやってきた。</p>
           <p className={styles.synopsis}>同じく休息を求めていた{'{{user}}'}は彼とばったり会い、なんとなく彼とご一緒することに…</p>
           <h2 className={theme.catchphrase}>この馬なんか変だぞ…？</h2>
