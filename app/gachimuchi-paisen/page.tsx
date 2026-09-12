@@ -23,6 +23,7 @@ export default function StoryPage() {
           <p className={styles.label}>作品紹介</p>
           <h1 id="story-title">{title}</h1>
           <p className={styles.synopsis}>製作者：夜の申し子</p>
+          <p className={styles.externalLink}><a href="https://s.kyarapu.com/s/6aa418b8db15d6359683208c" target="_blank" rel="noreferrer" aria-label="キャラぷで「ガチムチパイセン海でも訓練ってマジすか」を開く（新しいタブ）">キャラぷで作品を開く <span aria-hidden="true">↗</span></a></p>
           <p className={styles.synopsis}>{introduction}</p>
           <a className={styles.jump} href="#characters">登場人物を見る <span aria-hidden="true">↓</span></a>
         </div>

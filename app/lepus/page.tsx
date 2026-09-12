@@ -24,6 +24,7 @@ export default function StoryPage() {
           <img className={theme.logo} src={`${basePath}/media/lepus/logo.png`} alt="Lepus Beach Resort" width="1536" height="1024" />
           <p className={styles.label}>作品紹介</p><h1 id="story-title">{title}</h1>
           <p className={theme.credit}>製作者：純粋なヒヨコ86637</p>
+          <p className={styles.externalLink}><a href="https://s.kyarapu.com/s/6aa41942343da5a6fa2af683" target="_blank" rel="noreferrer" aria-label="キャラぷで「Lepusバニーボーイ専門店出張篇」を開く（新しいタブ）">キャラぷで作品を開く <span aria-hidden="true">↗</span></a></p>
           <blockquote>Lepus Beach Resort ― この夏だけの、海辺の特別営業 ―</blockquote>
           <p className={styles.synopsis}>{introduction}</p>
           <a className={styles.jump} href="#characters">登場人物を見る <span aria-hidden="true">↓</span></a>

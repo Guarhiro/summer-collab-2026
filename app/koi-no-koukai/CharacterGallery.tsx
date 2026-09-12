@@ -212,6 +212,7 @@ export default function CharacterGallery() {
                 <span>~Voyage on the Eternal Blue~</span>
               </h1>
               <p className={styles.creator}>製作者：ガルヒロ</p>
+              <p className={styles.externalLink}><a href="https://kyarapu.com/detail/6aa2a04184523144c00cad7f" target="_blank" rel="noreferrer" aria-label="キャラぷで「恋の航海」を開く（新しいタブ）">キャラぷで作品を開く <span aria-hidden="true">↗</span></a></p>
               <p className={styles.introduction}>
                 豪華クルーズ船「エターナル・ブルー号」に集まった、
                 個性豊かな男女12人。恋と嘘が揺れ動く7日間の航海へ。

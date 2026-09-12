@@ -33,6 +33,7 @@ export default function StoryPage() {
           <p className={styles.label}>作品紹介</p>
           <h1 id="story-title">親友と義兄の<span>仁義なき</span>夏の休日</h1>
           <p className={styles.label}>製作者：肴波</p>
+          <p className={styles.externalLink}><a href="https://s.kyarapu.com/s/6aa42d4826a694352a0345b3" target="_blank" rel="noreferrer" aria-label="キャラぷで「親友と義兄の仁義なき夏の休日」を開く（新しいタブ）">キャラぷで作品を開く <span aria-hidden="true">↗</span></a></p>
           <p className={styles.synopsis}>{introduction}</p>
           <a className={styles.jump} href="#characters">登場人物を見る <span aria-hidden="true">↓</span></a>
         </div>

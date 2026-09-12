@@ -35,6 +35,7 @@ export default function StoryPage() {
           <p className={styles.label}>作品紹介</p>
           <h1 id="story-title">{title}</h1>
           <p className={theme.credit}>製作者：天音しあ</p>
+          <p className={styles.externalLink}><a href="https://s.kyarapu.com/s/6aa41983fd230e4c7a2788fb" target="_blank" rel="noreferrer" aria-label="キャラぷで「知り合い以上恋未満の距離」を開く（新しいタブ）">キャラぷで作品を開く <span aria-hidden="true">↗</span></a></p>
           {story.map(paragraph => <p className={styles.synopsis} key={paragraph}>{paragraph}</p>)}
           <a className={styles.jump} href="#characters">登場人物を見る <span aria-hidden="true">↓</span></a>
         </div>

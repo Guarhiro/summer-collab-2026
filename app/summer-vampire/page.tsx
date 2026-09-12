@@ -17,6 +17,7 @@ export default function StoryPage() {
           <p className={styles.label}>作品紹介</p>
           <h1 id="story-title">夏に恋した<span>吸血鬼</span></h1>
           <p className={theme.credit}>製作者：ミネス14世</p>
+          <p className={styles.externalLink}><a href="https://s.kyarapu.com/s/6aa3e4eae7e1c585127cf50d" target="_blank" rel="noreferrer" aria-label="キャラぷで「夏に恋した吸血鬼」を開く（新しいタブ）">キャラぷで作品を開く <span aria-hidden="true">↗</span></a></p>
           <p className={styles.synopsis}>現存する最後の吸血鬼と過ごす、ひと夏の恋物語。 太陽を60分だけ克服できる秘薬「蒼月の雫」を完成させた燈李は、何百年も憧れていた夏の海へ。そこで偶然出会ったあなたを軽いノリでナンパする。 海、ラムネ、夏祭り、花火⋯初めての夏を一緒に過ごすうち、ただの遊び相手だった二人の関係が少しずつ変わっていく。</p>
           <a className={styles.jump} href="#characters">登場人物を見る <span aria-hidden="true">↓</span></a>
         </div>

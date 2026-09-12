@@ -32,6 +32,7 @@ export default function StoryPage() {
           <p className={styles.label}>作品紹介</p>
           <h1 id="story-title">{title}</h1>
           <p className={theme.credit}>製作者：さかなししゃも</p>
+          <p className={styles.externalLink}><a href="https://s.kyarapu.com/s/6aa39accdb15d6359651f395" target="_blank" rel="noreferrer" aria-label="キャラぷで「きみの知らない夏がある」を開く（新しいタブ）">キャラぷで作品を開く <span aria-hidden="true">↗</span></a></p>
           {story.map(paragraph => <p className={styles.synopsis} key={paragraph}>{paragraph}</p>)}
           <blockquote>蠖ｼ縺ｯ螟上′邨ゅｏ繧九→豸医∴繧?</blockquote>
           <a className={styles.jump} href="#characters">登場人物を見る <span aria-hidden="true">↓</span></a>

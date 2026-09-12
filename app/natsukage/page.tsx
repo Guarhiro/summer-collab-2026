@@ -40,6 +40,7 @@ export default function StoryPage() {
           <Portraits id="mio" name="葛城 澪" />
           <div className={styles.bio}>
             <h3>葛城 澪<small>かつらぎ みお</small></h3>
+            <p className={styles.externalLink}><a href="https://s.kyarapu.com/s/6aa41b3299cd1a5234a2d3bb" target="_blank" rel="noreferrer" aria-label="キャラぷで葛城 澪を開く（新しいタブ）">キャラぷで澪を開く <span aria-hidden="true">↗</span></a></p>
             <p className={styles.synopsis}>綾守町で生まれ育った、あなたの幼馴染。穏やかで優しく、誰に対しても思いやりのある少女。控えめな性格だが、大切な人を守りたいという強さを秘めている。</p>
           </div>
         </article>
@@ -47,6 +48,7 @@ export default function StoryPage() {
           <Portraits id="hotaru" name="榛名 蛍" />
           <div className={styles.bio}>
             <h3>榛名 蛍<small>はるな ほたる</small></h3>
+            <p className={styles.externalLink}><a href="https://s.kyarapu.com/s/6aa41b6935154311c38a8ab9" target="_blank" rel="noreferrer" aria-label="キャラぷで榛名 蛍を開く（新しいタブ）">キャラぷで蛍を開く <span aria-hidden="true">↗</span></a></p>
             <p className={styles.synopsis}>綾守町で生まれ育った、あなたの幼馴染。明るく親しみやすく、誰に対しても優しい青年。困っている人を放っておけず、頼られると断れない面もある。</p>
           </div>
         </article>
