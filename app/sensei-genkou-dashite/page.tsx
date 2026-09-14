@@ -34,6 +34,7 @@ export default function StoryPage() {
           <p className={styles.label}>作品紹介</p>
           <h1 id="story-title">{title}</h1>
           <p className={theme.credit}>製作者：{creator}</p>
+          <p className={styles.externalLink}><a href="https://s.kyarapu.com/s/697a24e0292aefc6a13cd574" target="_blank" rel="noreferrer" aria-label="キャラぷで「先生原稿出してくださいっ」を開く（新しいタブ）">キャラぷで作品を開く <span aria-hidden="true">↗</span></a></p>
           {story.map((paragraph) => (
             <p className={styles.synopsis} key={paragraph}>{paragraph}</p>
           ))}

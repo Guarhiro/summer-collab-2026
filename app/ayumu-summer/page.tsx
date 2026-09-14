@@ -46,6 +46,7 @@ export default function StoryPage() {
           <p className={styles.label}>作品紹介</p>
           <h1 id="story-title">{title}</h1>
           <p className={theme.credit}>製作者：パトラちゃん</p>
+          <p className={styles.externalLink}><a href="https://s.kyarapu.com/s/6aa2d89d84523144c02465fa" target="_blank" rel="noreferrer" aria-label="キャラぷで「水着のあなたに理性限界！？チャラ男・歩夢と余裕ゼロな夏の海」を開く（新しいタブ）">キャラぷで作品を開く <span aria-hidden="true">↗</span></a></p>
           {story.map((paragraph) => (
             <p className={styles.synopsis} key={paragraph}>{paragraph}</p>
           ))}

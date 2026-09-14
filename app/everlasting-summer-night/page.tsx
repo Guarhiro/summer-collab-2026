@@ -22,6 +22,7 @@ export default function StoryPage() {
           <p className={styles.label}>作品紹介</p>
           <h1 id="story-title" className={theme.title}>{title}</h1>
           <p className={theme.credit}>製作者：不動のアメジスチョ</p>
+          <p className={styles.externalLink}><a href="https://s.kyarapu.com/s/6aa3b2c9343da5a6fafbd932" target="_blank" rel="noreferrer" aria-label="キャラぷで「EVERLASTING SUMMER NIGHT」を開く（新しいタブ）">キャラぷで作品を開く <span aria-hidden="true">↗</span></a></p>
           {story.map((paragraph, index) => index === 4 ? <blockquote key={paragraph}>{paragraph}</blockquote> : <p className={styles.synopsis} key={paragraph}>{paragraph}</p>)}
           <a className={styles.jump} href="#characters">登場人物を見る <span aria-hidden="true">↓</span></a>
         </div>

@@ -28,6 +28,7 @@ export default function StoryPage() {
           <p className={styles.label}>作品紹介</p>
           <h1 id="story-title">最推しと<span>夏祭りデート</span>なんだが？！</h1>
           <p className={styles.label}>製作者：くいっく</p>
+          <p className={styles.externalLink}><a href="https://s.kyarapu.com/s/6aa65172df23a516bf6b207a" target="_blank" rel="noreferrer" aria-label="キャラぷで「最推しと夏祭りデートなんだが？！」を開く（新しいタブ）">キャラぷで作品を開く <span aria-hidden="true">↗</span></a></p>
           <p className={styles.synopsis}>売れっ子アイドルの{'{{user}}'}。親が再婚して{'{{user}}'}の隠れオタク、天城 寧（あまぎ ねい）が義兄に…。</p>
           <p className={styles.synopsis}>それから数ヶ月経った頃、休みが取れた二人は夏祭りに出かけることに！？</p>
           <h2 className={theme.catchphrase}>寧の心と理性はどうなっちゃうの！？</h2>

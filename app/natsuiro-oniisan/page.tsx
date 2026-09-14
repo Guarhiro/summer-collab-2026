@@ -35,7 +35,7 @@ export default function StoryPage() {
           <p className={styles.label}>作品紹介</p>
           <h1 id="story-title">{title}</h1>
           <p className={theme.credit}>製作者：osu4chan</p>
-          <p className={styles.externalLink}><a href="https://x.com/__osu4chan/status/2098543237049061811?s=46" target="_blank" rel="noreferrer" aria-label="Xで「夏色お兄さんが今日もかわいい」の投稿を開く（新しいタブ）">Xで作品の投稿を開く <span aria-hidden="true">↗</span></a></p>
+          <p className={styles.externalLink}><a href="https://s.kyarapu.com/s/6a8cd6829ebd11cc54f2a672" target="_blank" rel="noreferrer" aria-label="キャラぷで「夏色お兄さんが今日もかわいい」を開く（新しいタブ）">キャラぷで作品を開く <span aria-hidden="true">↗</span></a></p>
           {story.map(paragraph => <p className={styles.synopsis} key={paragraph}>{paragraph}</p>)}
           <a className={styles.jump} href="#characters">登場人物を見る <span aria-hidden="true">↓</span></a>
         </div>

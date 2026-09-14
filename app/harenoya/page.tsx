@@ -69,6 +69,8 @@ export default function StoryPage() {
                 <div className={styles.synopsis}>
                   <h3 className={styles.textLabel}>作品紹介</h3>
                   <p>{story.description}</p>
+                  {story.id === "haru" && <p className={styles.externalLink}><a href="https://s.kyarapu.com/s/6aa56cdd6e2b4aadeba6274b" target="_blank" rel="noreferrer" aria-label="キャラぷで「はれの屋恋日和ー波瑠の場合ー」を開く（新しいタブ）">はれの屋恋日和ー波瑠の場合ー <span aria-hidden="true">↗</span></a></p>}
+                  {story.id === "touka" && <p className={styles.externalLink}><a href="https://kyarapu.com/detail/6aa6be67e7e1c58512756ac6" target="_blank" rel="noreferrer" aria-label="キャラぷで「はれの屋恋日和ー透華の場合ー」を開く（新しいタブ）">はれの屋恋日和ー透華の場合ー <span aria-hidden="true">↗</span></a></p>}
                 </div>
                 <div className={styles.bio}>
                   <p className={styles.textLabel}>キャラクター紹介</p>

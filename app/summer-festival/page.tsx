@@ -62,6 +62,11 @@ export default function StoryPage() {
               SUMMER FESTIVAL <span aria-hidden="true">↗</span>
             </a>
           </p>
+          <p className={theme.externalLink}>
+            <a href="https://s.kyarapu.com/s/6aa4bf9cfd230e4c7a538504" target="_blank" rel="noreferrer" aria-label="キャラぷで「SUMMER FESTIVAL」を開く（新しいタブ）">
+              キャラぷで作品を開く <span aria-hidden="true">↗</span>
+            </a>
+          </p>
           <div className={theme.story}>
             {story.map((paragraph) => (
               <p className={styles.synopsis} key={paragraph}>{paragraph}</p>
